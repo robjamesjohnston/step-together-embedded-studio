@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap");
+
+  html,
+  body,
+  .wrapper {
+    @apply h-full;
+  }
+
+  /* [slug].js */
+  strong {
+    @apply font-bold;
+  }
+  article p {
+    @apply md:w-1/2 md:mx-auto font-light mb-4;
+  }
+  article p a {
+    @apply border-b-2 border-green border-opacity-50 hover:border-opacity-100 text-green;
+  }
+  blockquote {
+    text-indent: -0.5em;
+  }
+
+  .main-slider.swiper-container,
+  section.info-box,
+  section.quote-box,
+  .full-bleed {
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
+
+  .main-slider .swiper-button-prev,
+  .main-slider .swiper-button-next,
+  .main-slider .swiper-button-disabled,
+  .slider-stories .swiper-button-prev,
+  .slider-stories .swiper-button-next,
+  .slider-stories .swiper-button-disabled {
+    @apply text-white hover:text-green;
+  }
+
+  /* .main-slider.swiper-container,
+  .slider-stories.swiper-container {
+    @apply overflow-visible;
+  }
+
+  .main-slider .swiper-pagination-fraction,
+  .main-slider .swiper-pagination-custom,
+  .main-slider .swiper-pagination-bullets {
+    @apply -bottom-12;
+  }
+
+  .slider-stories .swiper-pagination-fraction,
+  .slider-stories .swiper-pagination-custom,
+  .slider-stories .swiper-pagination-bullets {
+    @apply -bottom-8;
+  } */
+
+  .main-slider .swiper-pagination-bullet-active,
+  .slider-stories .swiper-pagination-bullet-active {
+    @apply bg-green;
+  }
+}
