@@ -6,6 +6,7 @@ import { RiExternalLinkLine } from "react-icons/ri";
 
 import Layout from "../components/Layout";
 import ArticleImage from "../components/ArticleImage";
+import PersonRef from "../components/PersonRef";
 import QuoteBox from "../components/QuoteBox";
 import InfoBox from "../components/InfoBox";
 import SingleButton from "../components/SingleButton";
@@ -38,6 +39,7 @@ const queryPage = `*[_type == "page" && slug.current == $slug] {
       reference->{_id, slug, title},
     },
     target->{_id, slug, title},
+    // _type == "personRef" => ^->,
   }
 }[0]`;
 
@@ -47,6 +49,7 @@ const queryAll = `*[_type == "page" && slug.current != ''] {
 `;
 
 const Page = ({ mainNav, page }) => {
+  // console.log(page);
   const router = useRouter();
   if (router.isFallback) {
     return <p>Loading...</p>;
@@ -101,7 +104,7 @@ const Page = ({ mainNav, page }) => {
   }
 
   const overrides = {
-    h2: (props) => <h2 className={`${colors.textCol} text-3xl font-medium mb-8`} {...props} />,
+    h2: (props) => <h2 className={`text-3xl font-light mb-8`} {...props} />,
   };
 
   const serializers = {
@@ -116,10 +119,13 @@ const Page = ({ mainNav, page }) => {
             BlockContent.defaultSerializers.types.block(props),
 
       articleImage: ArticleImage,
+      personRef: PersonRef,
       quoteBox: (props) => <QuoteBox quoteBoxProps={props.node} colors={colors} />,
-      infoBox: (props) => <InfoBox infoBoxProps={props.node} />,
+      infoBox: (props) => <InfoBox infoBoxProps={props.node} backupCol={colors} />,
       singleButton: (props) => <SingleButton buttonProps={props.node} colors={colors} />,
-      multipleButtons: (props) => <GroupButtons groupButtons={props.node.groupButtons} />,
+      multipleButtons: (props) => (
+        <GroupButtons groupButtons={props.node.groupButtons} backupCol={colors.bgCol} />
+      ),
     },
     marks: {
       internalLink: (props) => (
@@ -146,7 +152,9 @@ const Page = ({ mainNav, page }) => {
   return (
     <Layout mainNav={mainNav} page={page}>
       <article className="mx-4 xs:mx-6 md:mx-8 text-darkGrey">
-        <h1 className="text-xl font-light uppercase tracking-wide">{page.title}</h1>
+        <h1 className={`${colors.textCol} text-xl font-bold uppercase tracking-wide`}>
+          {page.title}
+        </h1>
         <BlockContent
           className={"content text-lg flex flex-col"}
           blocks={page.body}

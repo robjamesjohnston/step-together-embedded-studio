@@ -16,7 +16,7 @@
     @apply font-bold;
   }
   article p {
-    @apply md:w-1/2 md:mx-auto font-light mb-4;
+    @apply md:w-2/3 md:mx-auto font-light mb-4;
   }
   article p a {
     @apply border-b-2 border-green border-opacity-50 hover:border-opacity-100 text-green;

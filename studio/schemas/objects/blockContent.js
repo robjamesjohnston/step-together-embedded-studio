@@ -73,6 +73,12 @@ export default {
       type: "articleImage",
     },
     {
+      name: "personRef",
+      type: "reference",
+      title: "Person",
+      to: [{ type: "person" }],
+    },
+    {
       type: "quoteBox",
     },
     {

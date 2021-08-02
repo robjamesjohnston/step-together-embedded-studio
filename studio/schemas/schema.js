@@ -8,6 +8,7 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import homepage from "./documents/homepage";
 import page from "./documents/page";
 import nav from "./documents/nav";
+import person from "./documents/person";
 
 // Object types
 import navSection from "./objects/navSection";
@@ -34,6 +35,7 @@ export default createSchema({
     homepage,
     page,
     nav,
+    person,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,

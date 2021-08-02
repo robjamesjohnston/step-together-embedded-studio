@@ -19,12 +19,6 @@ export default {
       title: "Button text",
     },
     {
-      name: "target",
-      type: "reference",
-      title: "Target",
-      to: [{ type: "page" }],
-    },
-    {
       name: "bgCol",
       type: "string",
       title: "Background colour",
@@ -35,6 +29,12 @@ export default {
           { title: "Dark grey", value: "darkGrey" },
         ],
       },
+    },
+    {
+      name: "target",
+      type: "reference",
+      title: "Target",
+      to: [{ type: "page" }],
     },
   ],
 };

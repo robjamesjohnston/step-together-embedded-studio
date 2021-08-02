@@ -1,6 +1,6 @@
 export default {
   name: "page",
-  title: "Page",
+  title: "Pages",
   type: "document",
   fields: [
     {
