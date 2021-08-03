@@ -72,11 +72,30 @@ export default {
     {
       type: "articleImage",
     },
+    // {
+    //   name: "personRef",
+    //   type: "reference",
+    //   title: "Person",
+    //   to: [{ type: "person" }],
+    // },
     {
-      name: "personRef",
-      type: "reference",
-      title: "Person",
-      to: [{ type: "person" }],
+      name: "people",
+      type: "object",
+      title: "People",
+      // preview: {
+      //   select: {
+      //     title: "groupButtons.0.title",
+      //     subtitle: "groupButtons.0.text",
+      //   },
+      // },
+      fields: [
+        {
+          name: "groupPeople",
+          type: "array",
+          title: "People",
+          of: [{ type: "reference", to: { type: "person" } }],
+        },
+      ],
     },
     {
       type: "quoteBox",

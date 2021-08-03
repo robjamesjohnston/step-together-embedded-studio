@@ -15,7 +15,7 @@
   strong {
     @apply font-bold;
   }
-  article p {
+  article p:not(.groupPeople *) {
     @apply md:w-2/3 md:mx-auto font-light mb-4;
   }
   article p a {

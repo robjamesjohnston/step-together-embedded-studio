@@ -6,7 +6,7 @@ import { RiExternalLinkLine } from "react-icons/ri";
 
 import Layout from "../components/Layout";
 import ArticleImage from "../components/ArticleImage";
-import PersonRef from "../components/PersonRef";
+import People from "../components/People";
 import QuoteBox from "../components/QuoteBox";
 import InfoBox from "../components/InfoBox";
 import SingleButton from "../components/SingleButton";
@@ -39,7 +39,10 @@ const queryPage = `*[_type == "page" && slug.current == $slug] {
       reference->{_id, slug, title},
     },
     target->{_id, slug, title},
-    // _type == "personRef" => ^->,
+    // "personRefResolved": @->,
+    groupPeople[]{
+      "groupPeopleResolved": @->,
+    }
   }
 }[0]`;
 
@@ -49,7 +52,6 @@ const queryAll = `*[_type == "page" && slug.current != ''] {
 `;
 
 const Page = ({ mainNav, page }) => {
-  // console.log(page);
   const router = useRouter();
   if (router.isFallback) {
     return <p>Loading...</p>;
@@ -119,7 +121,8 @@ const Page = ({ mainNav, page }) => {
             BlockContent.defaultSerializers.types.block(props),
 
       articleImage: ArticleImage,
-      personRef: PersonRef,
+      // personRef: (props) => <Person personProps={props.node.personRefResolved} colors={colors} />,
+      people: (props) => <People peopleProps={props.node.groupPeople} colors={colors} />,
       quoteBox: (props) => <QuoteBox quoteBoxProps={props.node} colors={colors} />,
       infoBox: (props) => <InfoBox infoBoxProps={props.node} backupCol={colors} />,
       singleButton: (props) => <SingleButton buttonProps={props.node} colors={colors} />,
