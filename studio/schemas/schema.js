@@ -9,6 +9,7 @@ import homepage from "./documents/homepage";
 import page from "./documents/page";
 import nav from "./documents/nav";
 import person from "./documents/person";
+import doc from "./documents/doc";
 
 // Object types
 import navSection from "./objects/navSection";
@@ -36,6 +37,7 @@ export default createSchema({
     page,
     nav,
     person,
+    doc,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,

@@ -15,11 +15,14 @@
   strong {
     @apply font-bold;
   }
-  article p:not(.groupPeople *) {
-    @apply md:w-2/3 md:mx-auto font-light mb-4;
+  article p:not(.group-people *):not(.client-group-button *) {
+    @apply font-light mb-4;
   }
   article p a {
     @apply border-b-2 border-green border-opacity-50 hover:border-opacity-100 text-green;
+  }
+  article ul {
+    @apply list-disc pl-8 font-light;
   }
   blockquote {
     text-indent: -0.5em;

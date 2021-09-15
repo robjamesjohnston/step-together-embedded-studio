@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-//remove in production?
 import { v4 as uuidv4 } from "uuid";
 
 import ActiveLink from "./ActiveLink";
 
-const NavbarSubList = ({ item, closeMenu }) => {
+const NavBarSubList = ({ item, closeMenu }) => {
   const [open2, setOpen2] = useState(false);
 
   const handleClick2 = () => {
@@ -14,7 +13,6 @@ const NavbarSubList = ({ item, closeMenu }) => {
 
   return (
     <li
-      key={uuidv4()}
       onClick={handleClick2}
       className="text-white hover:text-lime transition duration-300 cursor-pointer pt-2 border-t"
     >
@@ -43,4 +41,4 @@ const NavbarSubList = ({ item, closeMenu }) => {
   );
 };
 
-export default NavbarSubList;
+export default NavBarSubList;

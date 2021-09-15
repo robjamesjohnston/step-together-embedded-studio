@@ -49,9 +49,9 @@ const Person = ({ name, job, area, bio, image, colors }) => {
       <p className="uppercase font-bold">{job}</p>
       <p className="font-light">{area}</p>
       {open ? (
-        <MdExpandLess onClick={closeBio} className="text-3xl" />
+        <MdExpandLess onClick={closeBio} className={`${colors.textHovCol} text-3xl transition-all duration-300`} />
       ) : (
-        <MdExpandMore onClick={openBio} className={`${colors.textCol} text-3xl`} />
+        <MdExpandMore onClick={openBio} className={`${colors.textHovCol} text-3xl transition-all duration-300`} />
       )}
       <div onClick={handleClick} className={`${open || "hidden"}`}>
         <p className="font-light">{bio}</p>

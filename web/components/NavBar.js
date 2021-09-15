@@ -1,11 +1,12 @@
 import { useState, useCallback, useEffect } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
+import { v4 as uuidv4 } from "uuid";
 
 import NavBarLogo from "./NavBarLogo";
 import NavBarList from "./NavBarList";
 import NavBarSubList from "./NavBarSubList";
 
-const Navbar = ({ mainNav }) => {
+const NavBar = ({ mainNav }) => {
   const [open, setOpen] = useState(false);
   const [offset, setOffset] = useState(false);
 
@@ -73,7 +74,7 @@ const Navbar = ({ mainNav }) => {
       {/* Burger menu */}
       <div
         onClick={handleClick}
-        className={`text-3xl xs:text-5xl lg:text-6xl m-4 xs:m-6 lg:m-8 cursor-pointer z-20 transition-all duration-300 ${
+        className={`h-8 xs:h-12 lg:h-16 text-3xl xs:text-5xl lg:text-6xl m-4 xs:m-6 lg:m-8 cursor-pointer z-20 transition-all duration-300 ${
           open ? "text-white hover:text-lime" : "text-darkGrey hover:text-green"
         }`}
       >
@@ -95,9 +96,9 @@ const Navbar = ({ mainNav }) => {
         <ul className="m-4 mt-16 xs:m-6 xs:mt-24 md:m-8 md:mt-32 text-3xl font-medium border-b border-white">
           {mainNav.sections.map((item) =>
             item.link.target ? (
-              <NavBarList item={item} closeMenu={closeMenu} />
+              <NavBarList key={uuidv4()} item={item} closeMenu={closeMenu} />
             ) : (
-              <NavBarSubList item={item} closeMenu={closeMenu} />
+              <NavBarSubList key={uuidv4()} item={item} closeMenu={closeMenu} />
             )
           )}
         </ul>
@@ -106,4 +107,4 @@ const Navbar = ({ mainNav }) => {
   );
 };
 
-export default Navbar;
+export default NavBar;

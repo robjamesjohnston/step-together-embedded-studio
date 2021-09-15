@@ -7,7 +7,7 @@ const Layout = ({ mainNav, page, children }) => (
     <HeadComp page={page} />
     <section className="wrapper">
       <Header mainNav={mainNav} />
-      <main className="max-w-6xl m-auto">{children}</main>
+      <main className="max-w-screen-lg m-auto">{children}</main>
       <Footer />
     </section>
   </>

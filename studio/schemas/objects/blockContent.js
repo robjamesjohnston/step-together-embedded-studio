@@ -72,31 +72,6 @@ export default {
     {
       type: "articleImage",
     },
-    // {
-    //   name: "personRef",
-    //   type: "reference",
-    //   title: "Person",
-    //   to: [{ type: "person" }],
-    // },
-    {
-      name: "people",
-      type: "object",
-      title: "People",
-      // preview: {
-      //   select: {
-      //     title: "groupButtons.0.title",
-      //     subtitle: "groupButtons.0.text",
-      //   },
-      // },
-      fields: [
-        {
-          name: "groupPeople",
-          type: "array",
-          title: "People",
-          of: [{ type: "reference", to: { type: "person" } }],
-        },
-      ],
-    },
     {
       type: "quoteBox",
     },
@@ -122,6 +97,43 @@ export default {
           type: "array",
           title: "Buttons",
           of: [{ type: "groupButton" }],
+        },
+      ],
+    },
+    {
+      name: "people",
+      type: "object",
+      title: "People",
+      preview: {
+        select: {
+          title: "groupPeople.0.name",
+          media: "groupPeople.0.image",
+        },
+      },
+      fields: [
+        {
+          name: "groupPeople",
+          type: "array",
+          title: "People",
+          of: [{ type: "reference", to: { type: "person" } }],
+        },
+      ],
+    },
+    {
+      name: "docs",
+      type: "object",
+      title: "Documents",
+      preview: {
+        select: {
+          title: "groupDocs.0.name",
+        },
+      },
+      fields: [
+        {
+          name: "groupDocs",
+          type: "array",
+          title: "Documents",
+          of: [{ type: "reference", to: { type: "doc" } }],
         },
       ],
     },

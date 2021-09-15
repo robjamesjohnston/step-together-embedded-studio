@@ -6,11 +6,12 @@ import { RiExternalLinkLine } from "react-icons/ri";
 
 import Layout from "../components/Layout";
 import ArticleImage from "../components/ArticleImage";
-import People from "../components/People";
 import QuoteBox from "../components/QuoteBox";
 import InfoBox from "../components/InfoBox";
 import SingleButton from "../components/SingleButton";
 import GroupButtons from "../components/GroupButtons";
+import People from "../components/People";
+import Docs from "../components/Docs";
 
 const queryMainNav = `*[handle == "main-nav"][0]{
   sections[]{
@@ -39,9 +40,12 @@ const queryPage = `*[_type == "page" && slug.current == $slug] {
       reference->{_id, slug, title},
     },
     target->{_id, slug, title},
-    // "personRefResolved": @->,
     groupPeople[]{
       "groupPeopleResolved": @->,
+    },
+    groupDocs[]{
+      "fileURL": @->file.asset->url,
+      "file": @->,
     }
   }
 }[0]`;
@@ -107,6 +111,7 @@ const Page = ({ mainNav, page }) => {
 
   const overrides = {
     h2: (props) => <h2 className={`text-3xl font-light mb-8`} {...props} />,
+    h3: (props) => <h3 className="mb-8 text-xl font-bold uppercase tracking-wide" {...props} />,
   };
 
   const serializers = {
@@ -119,16 +124,15 @@ const Page = ({ mainNav, page }) => {
             overrides[props.node.style]({ children: props.children })
           : // otherwise, fallback to the provided default with all props
             BlockContent.defaultSerializers.types.block(props),
-
       articleImage: ArticleImage,
-      // personRef: (props) => <Person personProps={props.node.personRefResolved} colors={colors} />,
-      people: (props) => <People peopleProps={props.node.groupPeople} colors={colors} />,
       quoteBox: (props) => <QuoteBox quoteBoxProps={props.node} colors={colors} />,
       infoBox: (props) => <InfoBox infoBoxProps={props.node} backupCol={colors} />,
       singleButton: (props) => <SingleButton buttonProps={props.node} colors={colors} />,
       multipleButtons: (props) => (
         <GroupButtons groupButtons={props.node.groupButtons} backupCol={colors.bgCol} />
       ),
+      people: (props) => <People peopleProps={props.node.groupPeople} colors={colors} />,
+      docs: (props) => <Docs docProps={props.node.groupDocs} colors={colors} />,
     },
     marks: {
       internalLink: (props) => (
@@ -155,11 +159,11 @@ const Page = ({ mainNav, page }) => {
   return (
     <Layout mainNav={mainNav} page={page}>
       <article className="mx-4 xs:mx-6 md:mx-8 text-darkGrey">
-        <h1 className={`${colors.textCol} text-xl font-bold uppercase tracking-wide`}>
+        <h1 className={`${colors.textCol} mb-8 text-xl font-bold uppercase tracking-wide`}>
           {page.title}
         </h1>
         <BlockContent
-          className={"content text-lg flex flex-col"}
+          className={"content grid grid-col"}
           blocks={page.body}
           serializers={serializers}
           projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
