@@ -15,13 +15,12 @@
     "@sanity/desk-tool",
     "@sanity/dashboard",
     "dashboard-widget-vercel",
-    "dashboard-widget-document-list"
+    "dashboard-widget-document-list",
+    "@sanity/production-preview"
   ],
   "env": {
     "development": {
-      "plugins": [
-        "@sanity/vision"
-      ]
+      "plugins": ["@sanity/vision"]
     }
   },
   "parts": [
@@ -35,7 +34,11 @@
     },
     {
       "implements": "part:@sanity/dashboard/config",
-      "path": "dashboardConfig"
+      "path": "./dashboardConfig"
+    },
+    {
+      "implements": "part:@sanity/production-preview/resolve-production-url",
+      "path": "./resolveProductionUrl"
     }
   ]
 }
