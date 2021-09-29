@@ -12,5 +12,12 @@ export default {
     {
       name: "project-users",
     },
+    {
+      name: "document-list",
+      options: {
+        title: "Recent pages",
+        query: '*[_type == "page"] | order(_updatedAt desc)',
+      },
+    },
   ],
 };
