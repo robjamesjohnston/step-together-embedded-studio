@@ -1693,7 +1693,7 @@
     react "17.0.1"
     rxjs "^6.5.3"
 
-"@sanity/ui@>=0.33.6", "@sanity/ui@^0.36.8":
+"@sanity/ui@>=0.33.6", "@sanity/ui@^0.36.12", "@sanity/ui@^0.36.8":
   version "0.36.12"
   resolved "https://registry.npmjs.org/@sanity/ui/-/ui-0.36.12.tgz#cdc0fde42869dfe2a8fc9c7afdbcbc1cac020e6c"
   integrity sha512-BTkuBWGIf03lVUrlgLRyUwixI9uWJjsOzJx0MJeZBO7fLsbaiI+4sMZZYqWpMZrw1mh2p0+jsaoDbKlbiHwrPA==
@@ -7731,7 +7731,7 @@ prompts@~2.3.2:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7, prop-types@^15.7.2:
+prop-types@15.7.2, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.npmjs.org/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -8642,6 +8642,15 @@ sanity-plugin-dashboard-widget-vercel@^1.1.0:
     use-deep-compare-effect "1.6.1"
     xstate "4.17.0"
     yup "0.32.9"
+
+sanity-plugin-iframe-pane@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.npmjs.org/sanity-plugin-iframe-pane/-/sanity-plugin-iframe-pane-1.0.8.tgz#945fdbe88d4fe887cf715c19f74487c24253f2fb"
+  integrity sha512-X2H4SWIgJmh4Ldmsd+SyYhQOcZIzzR3VOJiKq2a9c6af4A+jzDcWy+G1RWUEZIyJGpjdpVEA29ZI0mEI+mLXzA==
+  dependencies:
+    "@sanity/icons" "^1.2.1"
+    "@sanity/ui" "^0.36.12"
+    prop-types "15.7.2"
 
 sax@~1.2.4:
   version "1.2.4"

@@ -5,7 +5,7 @@ import Footer from "./Footer";
 const Layout = ({ mainNav, page, children }) => (
   <>
     <HeadComp page={page} />
-    <section className="wrapper">
+    <section className="wrapper bg-white">
       <Header mainNav={mainNav} />
       <main className="max-w-screen-lg m-auto">{children}</main>
       <Footer />

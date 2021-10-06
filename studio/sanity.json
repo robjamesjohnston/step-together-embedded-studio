@@ -16,11 +16,14 @@
     "@sanity/dashboard",
     "dashboard-widget-vercel",
     "dashboard-widget-document-list",
-    "@sanity/production-preview"
+    "@sanity/production-preview",
+    "iframe-pane"
   ],
   "env": {
     "development": {
-      "plugins": ["@sanity/vision"]
+      "plugins": [
+        "@sanity/vision"
+      ]
     }
   },
   "parts": [

@@ -23,6 +23,7 @@
     "react-icons": "^4.2.0",
     "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
     "sanity-plugin-dashboard-widget-vercel": "^1.1.0",
+    "sanity-plugin-iframe-pane": "^1.0.8",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
