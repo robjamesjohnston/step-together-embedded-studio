@@ -13,6 +13,7 @@ export default {
       name: "target",
       type: "reference",
       title: "Target",
+      validation: (Rule) => Rule.required(),
       to: [{ type: "page" }],
     },
   ],

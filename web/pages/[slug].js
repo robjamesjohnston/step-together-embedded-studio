@@ -188,7 +188,7 @@ export const getStaticPaths = async () => {
   const paths = allPages.map((page) => ({
     params: { slug: page.slug },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: true };
 };
 
 export default Page;

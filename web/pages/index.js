@@ -70,6 +70,7 @@ export const getStaticProps = async () => {
   const homepage = await sanityClient.fetch(queryHomepage);
   return {
     props: { mainNav, homepage },
+    revalidate: 1,
   };
 };
 
