@@ -22,7 +22,7 @@ const GroupButton = ({ title, text, bgCol, backupCol, target }) => (
         <h2 className="text-3xl xs:text-5xl md:text-3xl font-bold uppercase tracking-wide pb-4">
           {title}
         </h2>
-        <p className="text-xl font-light w-full">{text}</p>
+        <p className="text-xl md:font-light w-full">{text}</p>
       </div>
       {target && <MdArrowForward className="text-9xl hover:animate-animated hover:animate-pulse" />}
     </div>

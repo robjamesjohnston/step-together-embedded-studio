@@ -15,8 +15,12 @@
   strong {
     @apply font-bold;
   }
-  article p:not(.group-people *):not(.client-group-button *) {
-    @apply font-light mb-4;
+  p {
+    @apply mb-4;
+  }
+  article p:not(.group-people *):not(.client-group-button *):not(.info-box *),
+  article ul {
+    @apply font-light text-lg;
   }
   article p a {
     @apply border-b-2 border-green border-opacity-50 hover:border-opacity-100 text-green;

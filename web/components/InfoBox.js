@@ -63,7 +63,7 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
         <h2 className="text-white text-3xl pb-2 font-bold tracking-wide uppercase md:w-1/2">
           {title}
         </h2>
-        <div className="md:w-1/2 text-white text-xl font-light">
+        <div className="md:w-1/2 text-white text-xl md:font-light">
           <BlockContent
             blocks={text}
             serializers={serializers}
@@ -82,7 +82,7 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
               <button
                 className={`transition-all duration-300 border-2 border-white hover:bg-white uppercase text-xl font-medium tracking-widest text-white ${
                   textHovCol ? textHovCol : backupCol.textHovCol
-                } w-full p-4 mt-8 mb-2`}
+                } w-full p-4 mt-4 mb-2`}
               >
                 {buttonText}
               </button>
