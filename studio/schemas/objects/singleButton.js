@@ -10,11 +10,8 @@ export default {
       initialValue: "Make a referral",
     },
     {
-      name: "target",
-      type: "reference",
-      title: "Target",
-      validation: (Rule) => Rule.required(),
-      to: [{ type: "page" }],
+      name: "link",
+      type: "link",
     },
   ],
 };

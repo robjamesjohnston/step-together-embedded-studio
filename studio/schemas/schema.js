@@ -23,6 +23,8 @@ import textBlock from "./objects/textBlock";
 import articleImage from "./objects/articleImage";
 import quoteBox from "./objects/quoteBox";
 import singleButton from "./objects/singleButton";
+import clientGroupHighlightCol from "./objects/clientGroupHighlightCol";
+import link from "./objects/link";
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -51,5 +53,7 @@ export default createSchema({
     articleImage,
     quoteBox,
     singleButton,
+    clientGroupHighlightCol,
+    link,
   ]),
 });

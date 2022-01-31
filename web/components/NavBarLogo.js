@@ -23,7 +23,7 @@ const NavBarLogo = ({ offset, isBreakpoint }) => {
         ) : (
           /* Logo */
           <img
-            className="transition-all duration-75 hover:opacity-75 h-16 m-8 xs:h-24 xs:m-12 lg:h-32 lg:m-16"
+            className="transition-all duration-75 hover:opacity-75 h-12 m-6 xs:h-18 xs:m-9 lg:h-24 lg:m-12"
             src="/logo.svg"
             alt="Step Together"
           />

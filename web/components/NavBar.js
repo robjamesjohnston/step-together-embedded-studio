@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { MdMenu, MdClose } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
 
+import NavBarDonate from "./NavBarDonate";
 import NavBarLogo from "./NavBarLogo";
 import NavBarList from "./NavBarList";
 import NavBarSubList from "./NavBarSubList";
@@ -65,20 +66,30 @@ const NavBar = ({ mainNav }) => {
 
   return (
     <nav
-      className={`sticky top-0 transition-all bg-white z-10 flex justify-between ${
-        offset ? "h-16 xs:h-24 lg:h-32" : "h-32 xs:h-48 lg:h-64"
+      className={`sticky top-0 transition-all bg-white z-10 flex ${
+        offset ? "h-16 xs:h-24 lg:h-32" : "h-24 xs:h-36 lg:h-48"
       }`}
     >
-      <NavBarLogo offset={offset} isBreakpoint={isBreakpoint} />
+      {/* Donate button */}
+      <div className="flex-1">
+        <NavBarDonate />
+      </div>
+
+      {/* Main logo */}
+      <div className="flex-none">
+        <NavBarLogo offset={offset} isBreakpoint={isBreakpoint} />
+      </div>
 
       {/* Burger menu */}
       <div
         onClick={handleClick}
-        className={`h-8 xs:h-12 lg:h-16 text-3xl xs:text-5xl lg:text-6xl m-4 xs:m-6 lg:m-8 cursor-pointer z-20 transition-all duration-300 ${
+        className={`flex-1 h-8 xs:h-12 lg:h-16 text-3xl xs:text-5xl lg:text-6xl m-4 xs:m-6 lg:m-8 cursor-pointer z-20 transition-all duration-300 ${
           open ? "text-white hover:text-lime" : "text-darkGrey hover:text-green"
         }`}
       >
-        {open ? <MdClose onClick={closeMenu} /> : <MdMenu />}
+        <div className="flex justify-end">
+          {open ? <MdClose onClick={closeMenu} /> : <MdMenu />}
+        </div>
       </div>
 
       {/* Overlay */}

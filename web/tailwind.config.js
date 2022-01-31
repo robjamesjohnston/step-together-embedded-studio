@@ -1,8 +1,7 @@
-const withAnimations = require("animated-tailwindcss");
 const { screens } = require("tailwindcss/defaultTheme");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
-module.exports = withAnimations({
+module.exports = {
   mode: "jit",
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
@@ -24,6 +23,9 @@ module.exports = withAnimations({
       orange: "rgb(242, 183, 1)",
     },
     extend: {
+      spacing: {
+        18: "4.5rem",
+      },
       fontFamily: {
         sans: ["'Space Grotesk'", ...defaultTheme.fontFamily.sans],
       },
@@ -33,4 +35,4 @@ module.exports = withAnimations({
     extend: {},
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
-});
+};

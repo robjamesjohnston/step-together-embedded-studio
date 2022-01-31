@@ -1,6 +1,7 @@
 import sanityClient from "../client";
 import BlockContent from "@sanity/block-content-to-react";
 import { useRouter } from "next/router";
+import ErrorPage from "next/error";
 import Link from "next/link";
 import { RiExternalLinkLine } from "react-icons/ri";
 
@@ -33,13 +34,20 @@ const queryPage = `*[_type == "page" && slug.current == $slug] {
     ...,
     groupButtons[]{
       ...,
-      target->{_id, slug, title},
+      link {
+        external,
+        internal->{_id, slug, title},
+      },
     },
     markDefs[]{
       ...,
       reference->{_id, slug, title},
     },
     target->{_id, slug, title},
+    link {
+      external,
+      internal->{_id, slug, title},
+    },
     groupPeople[]{
       "groupPeopleResolved": @->,
     },
@@ -59,6 +67,9 @@ const Page = ({ mainNav, page }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <p>Loading...</p>;
+  }
+  if (!router.isFallback && !page) {
+    return <ErrorPage statusCode={404} />;
   }
 
   let colors;

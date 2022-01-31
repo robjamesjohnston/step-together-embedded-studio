@@ -26,23 +26,5 @@ export default {
       title: "Title",
       description: "Overrides the title from the target if present",
     },
-    // {
-    //   name: "linkUrl",
-    //   type: "string",
-    //   title: "URL",
-    //   description:
-    //     "For internal links use the page path e.g. ‘companies’. For external links use the full url e.g. ‘https://google.co.uk/’.",
-    // },
-    // {
-    //   name: "externalContent",
-    //   type: "boolean",
-    //   title: "Link is an external source",
-    // },
-    // {
-    //   name: "children",
-    //   type: "array",
-    //   title: "Children",
-    //   of: [{ type: "navLink" }],
-    // },
   ],
 };

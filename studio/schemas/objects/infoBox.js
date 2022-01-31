@@ -43,7 +43,7 @@ export default {
                   {
                     name: "reference",
                     type: "reference",
-                    title: "Reference",
+                    title: "Target",
                     to: [{ type: "page" }],
                   },
                 ],
@@ -92,10 +92,8 @@ export default {
       },
     },
     {
-      name: "target",
-      type: "reference",
-      title: "Target",
-      to: [{ type: "page" }],
+      name: "link",
+      type: "link",
     },
   ],
 };

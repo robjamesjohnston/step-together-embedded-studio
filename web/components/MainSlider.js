@@ -40,10 +40,10 @@ const MainSlider = ({ mainSlider }) => {
         return (
           <SwiperSlide key={item._key} className="hover:opacity-75 transition-all duration-300">
             <Link href={item.target.slug.current}>
-              <a className="md:flex">
+              <a className="lg:flex">
                 {/* 4, 2, 1 – 16:9
                     3, 2, 1 – 6:4 */}
-                <figure className="aspect-w-3 aspect-h-2 md:aspect-h-1 md:w-1/2">
+                <figure className="aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2">
                   <Image
                     alt={item.altText}
                     src={imageProps.src}
@@ -52,8 +52,8 @@ const MainSlider = ({ mainSlider }) => {
                     objectFit="cover"
                   />
                 </figure>
-                <div className={`${bgCol} p-4 md:w-1/2 h-28 xs:h-32 md:h-auto`}>
-                  <h2 className="text-3xl xs:text-5xl font-bold tracking-wide uppercase text-white">
+                <div className={`${bgCol} aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2`}>
+                  <h2 className="p-4 text-5xl xs:text-7xl xl:text-8xl font-bold tracking-wide uppercase text-white">
                     {item.title}
                   </h2>
                 </div>

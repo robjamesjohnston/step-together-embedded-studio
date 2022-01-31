@@ -52,21 +52,26 @@
   /* .main-slider.swiper-container,
   .slider-stories.swiper-container {
     @apply overflow-visible;
-  }
+  } */
 
-  .main-slider .swiper-pagination-fraction,
+  /* .main-slider .swiper-pagination-fraction,
   .main-slider .swiper-pagination-custom,
   .main-slider .swiper-pagination-bullets {
-    @apply -bottom-12;
-  }
+    @apply bottom-8;
+  } */
 
   .slider-stories .swiper-pagination-fraction,
   .slider-stories .swiper-pagination-custom,
   .slider-stories .swiper-pagination-bullets {
-    @apply -bottom-8;
-  } */
+    @apply bottom-12;
+  }
 
-  .main-slider .swiper-pagination-bullet-active,
+  .main-slider .swiper-pagination-bullet,
+  .main-slider .swiper-pagination-bullet-active {
+    @apply bg-white;
+  }
+
+  .slider-stories .swiper-pagination-bullet,
   .slider-stories .swiper-pagination-bullet-active {
     @apply bg-green;
   }

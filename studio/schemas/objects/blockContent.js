@@ -40,7 +40,7 @@ export default {
               {
                 name: "reference",
                 type: "reference",
-                title: "Reference",
+                title: "Target",
                 to: [{ type: "page" }],
               },
             ],

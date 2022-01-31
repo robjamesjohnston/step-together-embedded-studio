@@ -2,11 +2,12 @@ import BlockContent from "@sanity/block-content-to-react";
 import { RiExternalLinkLine } from "react-icons/ri";
 import Link from "next/link";
 
-const ConditionalWrapper = ({ condition, wrapper, children }) =>
-  condition ? wrapper(children) : children;
+const ConditionalWrapper = ({ condition, wrapper, children }) => {
+  return condition ? wrapper(children) : children;
+};
 
 const InfoBox = ({ infoBoxProps, backupCol }) => {
-  const { title, text, buttonText, target, bgCol } = infoBoxProps;
+  const { title, text, buttonText, link, bgCol } = infoBoxProps;
   let backgroundCol;
   switch (bgCol) {
     case "lime":
@@ -71,14 +72,20 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
             dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
           />
           <ConditionalWrapper
-            condition={target}
-            wrapper={(children) => (
-              <Link href={target.slug.current} passHref>
-                {children}
-              </Link>
-            )}
+            condition={link}
+            wrapper={(children) => {
+              return link.external ? (
+                <a href={link.external} target="_blank" rel="noopener">
+                  {children}
+                </a>
+              ) : (
+                <Link href={link.internal.slug.current} passHref>
+                  <a>{children}</a>
+                </Link>
+              );
+            }}
           >
-            {target && (
+            {link && (
               <button
                 className={`transition-all duration-300 border-2 border-white hover:bg-white uppercase text-xl font-medium tracking-widest text-white ${
                   textHovCol ? textHovCol : backupCol.textHovCol

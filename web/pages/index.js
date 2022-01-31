@@ -26,19 +26,25 @@ const queryHomepage = `*[_id == "homepage"][0]{
     ...,
     target->{_id, slug, title},
     title
-},
+  },
   clientGroupButtons[]{
     ...,
-    target->{_id, slug, title},
-},
+    link {
+    	external,
+    	internal->{_id, slug, title},
+  	},
+  },
   sections[]{
-   ...,
-    target->{_id, slug, title},
+    ...,
+    link {
+      external,
+      internal->{_id, slug, title},
+    },
     sliderImages[]{
       ...,
       target->{_id, slug, title},
-}
-}
+    }
+  }
 }`;
 
 const IndexPage = ({ mainNav, homepage }) => (
