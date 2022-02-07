@@ -36,17 +36,36 @@ const queryPage = `*[_type == "page" && slug.current == $slug] {
       ...,
       link {
         external,
-        internal->{_id, slug, title},
+        internal->{
+          ...,
+          "fileURL": file.asset->url
+        },
       },
     },
     markDefs[]{
       ...,
-      reference->{_id, slug, title},
+      reference->{
+        ...,
+        "fileURL": file.asset->url
+      },
+    },
+    text[]{
+      ...,
+      markDefs[]{
+        ...,
+        reference->{
+          ...,
+          "fileURL": file.asset->url
+        },
+      },
     },
     target->{_id, slug, title},
     link {
       external,
-      internal->{_id, slug, title},
+      internal->{
+        ...,
+        "fileURL": file.asset->url
+      },
     },
     groupPeople[]{
       "groupPeopleResolved": @->,
@@ -147,7 +166,13 @@ const Page = ({ mainNav, page }) => {
     },
     marks: {
       internalLink: (props) => (
-        <Link href={props.mark.reference.slug.current}>
+        <Link
+          href={
+            props.mark.reference.slug
+              ? props.mark.reference.slug.current
+              : `${props.mark.reference.fileURL}?dl=`
+          }
+        >
           <a>{props.children}</a>
         </Link>
       ),

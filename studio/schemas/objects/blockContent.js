@@ -41,7 +41,8 @@ export default {
                 name: "reference",
                 type: "reference",
                 title: "Target",
-                to: [{ type: "page" }],
+                description: "Link to a page or document",
+                to: [{ type: "page" }, { type: "doc" }],
               },
             ],
           },
@@ -54,6 +55,7 @@ export default {
                 name: "href",
                 type: "url",
                 title: "URL",
+                description: "Must start with 'https://'",
               },
               {
                 name: "blank",

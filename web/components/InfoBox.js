@@ -38,7 +38,13 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
     },
     marks: {
       internalLink: (props) => (
-        <Link href={props.mark.reference.slug.current}>
+        <Link
+          href={
+            props.mark.reference.slug
+              ? props.mark.reference.slug.current
+              : `${props.mark.reference.fileURL}?dl=`
+          }
+        >
           <a>{props.children}</a>
         </Link>
       ),
@@ -79,7 +85,11 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
                   {children}
                 </a>
               ) : (
-                <Link href={link.internal.slug.current} passHref>
+                <Link
+                  href={
+                    link.internal.slug ? link.internal.slug.current : `${link.internal.fileURL}?dl=`
+                  }
+                >
                   <a>{children}</a>
                 </Link>
               );

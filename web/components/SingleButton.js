@@ -15,7 +15,9 @@ const SingleButton = ({ buttonProps, colors }) => {
             {children}
           </a>
         ) : (
-          <Link href={link.internal.slug.current} passHref>
+          <Link
+            href={link.internal.slug ? link.internal.slug.current : `${link.internal.fileURL}?dl=`}
+          >
             <a>{children}</a>
           </Link>
         );
