@@ -83,7 +83,7 @@ const NavBar = ({ mainNav }) => {
       {/* Burger menu */}
       <div
         onClick={handleClick}
-        className={`flex-1 h-8 xs:h-12 lg:h-16 text-3xl xs:text-5xl lg:text-6xl m-4 xs:m-6 lg:m-8 cursor-pointer z-20 transition-all duration-300 ${
+        className={`flex-1 h-8 xs:h-12 lg:h-16 text-3xl xs:text-5xl lg:text-6xl my-4 mr-4 xs:my-6 xs:mr-6 lg:my-8 lg:mr-8 cursor-pointer z-20 transition-all duration-300 ${
           open ? "text-white hover:text-lime" : "text-darkGrey hover:text-green"
         }`}
       >

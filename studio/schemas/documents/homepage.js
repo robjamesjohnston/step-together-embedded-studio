@@ -43,5 +43,25 @@ export default {
       title: "Sections",
       of: [{ type: "infoBox" }, { type: "textBlock" }, { type: "slider" }],
     },
+    {
+      name: "facebookLink",
+      type: "string",
+      title: "Facebook",
+    },
+    {
+      name: "twitterLink",
+      type: "string",
+      title: "Twitter",
+    },
+    {
+      name: "linkedinLink",
+      type: "string",
+      title: "Linkedin",
+    },
+    {
+      name: "youTubeLink",
+      type: "string",
+      title: "YouTube",
+    },
   ],
 };

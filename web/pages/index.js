@@ -48,7 +48,14 @@ const queryHomepage = `*[_id == "homepage"][0]{
 }`;
 
 const IndexPage = ({ mainNav, homepage }) => (
-  <Layout mainNav={mainNav} page={{ title: homepage.siteTitle }}>
+  <Layout
+    mainNav={mainNav}
+    page={{ title: homepage.siteTitle }}
+    facebookLink={homepage.facebookLink}
+    twitterLink={homepage.twitterLink}
+    linkedinLink={homepage.linkedinLink}
+    youTubeLink={homepage.youTubeLink}
+  >
     <section className="mx-4 xs:mx-6 md:mx-8 flex flex-col">
       <MainSlider mainSlider={homepage.mainSlider} />
       <TextBlock text={homepage.siteSummary} />

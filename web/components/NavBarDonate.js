@@ -2,11 +2,11 @@ import Link from "next/link";
 import { MdArrowForward } from "react-icons/md";
 
 const NavBarDonate = () => (
-  <Link href="/donate2">
+  <Link href="/donate">
     <a>
-      <div className="sm:flex text-xl xs:text-2xl lg:text-3xl text-darkGrey hover:text-green ml-4 my-4 xs:ml-6 xs:my-8 lg:ml-8 lg:my-11">
+      <div className="flex items-center text-md xs:text-xl lg:text-4xl text-darkGrey hover:text-green ml-4 my-5 xs:ml-6 xs:my-9 lg:ml-8 lg:my-10">
         <div>DONATE</div>
-        <MdArrowForward className="text-2xl xs:text-3xl lg:text-4xl sm:ml-2" />
+        <MdArrowForward className="ml-2 text-lg xs:text-2xl lg:text-5xl" />
       </div>
     </a>
   </Link>

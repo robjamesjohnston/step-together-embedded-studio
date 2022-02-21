@@ -65,12 +65,10 @@
   .slider-stories .swiper-pagination-bullets {
     @apply bottom-12;
   }
-
   .main-slider .swiper-pagination-bullet,
   .main-slider .swiper-pagination-bullet-active {
     @apply bg-white;
   }
-
   .slider-stories .swiper-pagination-bullet,
   .slider-stories .swiper-pagination-bullet-active {
     @apply bg-green;

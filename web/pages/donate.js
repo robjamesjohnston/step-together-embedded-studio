@@ -1,4 +1,6 @@
+import React, { useState } from "react";
 import sanityClient from "../client";
+
 import Layout from "../components/Layout";
 
 const queryMainNav = `*[handle == "main-nav"][0]{
@@ -15,17 +17,85 @@ const queryMainNav = `*[handle == "main-nav"][0]{
 }`;
 
 const Donate = ({ mainNav }) => {
-  console.log("WIP");
+  const handleChange = (event) => setFrequency(event.target.value);
+  const [frequency, setFrequency] = useState(null);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const amount = event.target.amount.value;
+    const donationAmount = amount * 100;
+
+    const res = await fetch("/api/goCardless", {
+      body: JSON.stringify({
+        donationAmount: donationAmount,
+        frequency: frequency,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      method: "POST",
+    });
+
+    const result = await res.json();
+
+    window.location = result.authorisation_url;
+  };
 
   return (
     <Layout mainNav={mainNav} page={{ title: "Donate" }}>
-      <h1>Donate</h1>
+      <article className="mx-4 xs:mx-6 md:mx-8 text-darkGrey">
+        <h1 className="text-green mb-8 text-xl font-bold uppercase tracking-wide">
+          Make a donation
+        </h1>
 
-      <form>
-        <label htmlFor="amount">Donation Amount</label>
-        <input id="amount" type="text" autoComplete="amount" required />
-        <button type="submit">Continue</button>
-      </form>
+        <form onSubmit={handleSubmit} className="flex flex-col">
+          <label htmlFor="amount">Amount £</label>
+          <input
+            id="amount"
+            name="amount"
+            type="text"
+            autoComplete="amount"
+            required
+            className="border-green border-2 h-16 mt-2 mb-8 bg-white p-4"
+          />
+          <div className="md:flex">
+            <div className="flex md:w-1/2 mb-12">
+              <div className="w-1/2">
+                <label htmlFor="one-off">One off donation</label>
+                <input
+                  id="one-off"
+                  value="one-off"
+                  name="frequency"
+                  type="radio"
+                  required
+                  className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
+                  checked={frequency === "one-off"}
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="w-1/2">
+                <label htmlFor="monthly">Monthly donation</label>
+                <input
+                  id="monthly"
+                  value="monthly"
+                  name="frequency"
+                  type="radio"
+                  required
+                  className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
+                  checked={frequency === "monthly"}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <button
+              type="submit"
+              className="transition-all duration-300 border-2 bg-green border-green hover:bg-white uppercase text-xl font-medium tracking-widest text-white hover:text-green p-4 mb-12  h-16 w-full md:w-1/2 md:self-end"
+            >
+              Continue
+            </button>
+          </div>
+        </form>
+      </article>
     </Layout>
   );
 };
