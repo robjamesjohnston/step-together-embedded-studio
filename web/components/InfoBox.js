@@ -38,35 +38,51 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
     },
     marks: {
       internalLink: (props) => (
-        <Link
-          href={
-            props.mark.reference.slug
-              ? props.mark.reference.slug.current
-              : `${props.mark.reference.fileURL}?dl=`
-          }
+        <ConditionalWrapper
+          condition={props.mark.reference}
+          wrapper={(children) => {
+            return (
+              <Link
+                href={
+                  props.mark.reference.slug
+                    ? props.mark.reference.slug.current
+                    : `${props.mark.reference.fileURL}?dl=`
+                }
+              >
+                <a>{children}</a>
+              </Link>
+            );
+          }}
         >
-          <a>{props.children}</a>
-        </Link>
+          {props.children}
+        </ConditionalWrapper>
       ),
-      link: (props) => {
-        return props.mark.blank ? (
-          <a href={props.mark.href} target="_blank" rel="noopener">
-            {props.children}
-            <RiExternalLinkLine className="inline ml-1 border-0" />
-          </a>
-        ) : (
-          <a href={props.mark.href}>
-            {props.children}
-            <RiExternalLinkLine className="inline ml-1 border-0" />
-          </a>
-        );
-      },
+      link: (props) => (
+        <ConditionalWrapper
+          condition={props.mark.href}
+          wrapper={(children) => {
+            return props.mark.blank ? (
+              <a href={props.mark.href} target="_blank" rel="noopener">
+                {children}
+                <RiExternalLinkLine className="inline ml-1 border-0" />
+              </a>
+            ) : (
+              <a href={props.mark.href}>
+                {children}
+                <RiExternalLinkLine className="inline ml-1 border-0" />
+              </a>
+            );
+          }}
+        >
+          {props.children}
+        </ConditionalWrapper>
+      ),
     },
   };
 
   return (
     <section className={`info-box my-8 ${backgroundCol ? backgroundCol : backupCol.bgCol}`}>
-      <div className="max-w-screen-lg m-auto p-4 xs:p-6 md:p-8 md:flex md:space-x-8">
+      <div className="max-w-screen-lg m-auto px-4 py-16 xs:px-6 xs:py-24 md:px-8 md:py-32 md:flex md:space-x-8">
         <h2 className="text-white text-3xl pb-2 font-bold tracking-wide uppercase md:w-1/2">
           {title}
         </h2>

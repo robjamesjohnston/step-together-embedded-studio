@@ -23,7 +23,7 @@
     @apply font-light text-lg;
   }
   article p a {
-    @apply border-b-2 border-green border-opacity-50 hover:border-opacity-100 text-green;
+    @apply border-b-2 border-lime border-opacity-50 hover:border-opacity-100 text-lime;
   }
   article ul {
     @apply list-disc pl-8 font-light;

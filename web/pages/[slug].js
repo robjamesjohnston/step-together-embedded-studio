@@ -82,7 +82,11 @@ const queryAll = `*[_type == "page" && slug.current != ''] {
 }
 `;
 
-const Page = ({ mainNav, page }) => {
+const ConditionalWrapper = ({ condition, wrapper, children }) => {
+  return condition ? wrapper(children) : children;
+};
+
+const Page = ({ mainNav, page, footer }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <p>Loading...</p>;
@@ -166,34 +170,62 @@ const Page = ({ mainNav, page }) => {
     },
     marks: {
       internalLink: (props) => (
-        <Link
-          href={
-            props.mark.reference.slug
-              ? props.mark.reference.slug.current
-              : `${props.mark.reference.fileURL}?dl=`
-          }
+        <ConditionalWrapper
+          condition={props.mark.reference}
+          wrapper={(children) => {
+            return (
+              <Link
+                href={
+                  props.mark.reference.slug
+                    ? props.mark.reference.slug.current
+                    : `${props.mark.reference.fileURL}?dl=`
+                }
+              >
+                <a>{children}</a>
+              </Link>
+            );
+          }}
         >
-          <a>{props.children}</a>
-        </Link>
+          {props.children}
+        </ConditionalWrapper>
       ),
-      link: (props) => {
-        return props.mark.blank ? (
-          <a href={props.mark.href} target="_blank" rel="noopener">
-            {props.children}
-            <RiExternalLinkLine className="inline ml-1 border-0" />
-          </a>
-        ) : (
-          <a href={props.mark.href}>
-            {props.children}
-            <RiExternalLinkLine className="inline ml-1 border-0" />
-          </a>
-        );
-      },
+      link: (props) => (
+        <ConditionalWrapper
+          condition={props.mark.href}
+          wrapper={(children) => {
+            return props.mark.blank ? (
+              <a href={props.mark.href} target="_blank" rel="noopener">
+                {children}
+                <RiExternalLinkLine className="inline ml-1 border-0" />
+              </a>
+            ) : (
+              <a href={props.mark.href}>
+                {children}
+                <RiExternalLinkLine className="inline ml-1 border-0" />
+              </a>
+            );
+          }}
+        >
+          {props.children}
+        </ConditionalWrapper>
+      ),
     },
   };
 
   return (
-    <Layout mainNav={mainNav} page={page}>
+    <Layout
+      mainNav={mainNav}
+      page={page}
+      footer={{
+        compInfo: footer.companyInfo,
+        socialLinks: {
+          fbLink: footer.facebookLink,
+          twLink: footer.twitterLink,
+          liLink: footer.linkedinLink,
+          ytLink: footer.youTubeLink,
+        },
+      }}
+    >
       <article className="mx-4 xs:mx-6 md:mx-8 text-darkGrey">
         <h1 className={`${colors.textCol} mb-8 text-xl font-bold uppercase tracking-wide`}>
           {page.title}
@@ -213,8 +245,9 @@ const Page = ({ mainNav, page }) => {
 export const getStaticProps = async (context) => {
   const mainNav = await sanityClient.fetch(queryMainNav);
   const page = await sanityClient.fetch(queryPage, { slug: context.params.slug });
+  const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
   return {
-    props: { mainNav, page },
+    props: { mainNav, page, footer },
     revalidate: 1,
   };
 };

@@ -11,10 +11,10 @@ const SliderStories = ({ sliderStories }) => {
   return (
     <Swiper
       className="slider-stories my-8 mx-0"
+      loop={true}
       watchOverflow={true}
       breakpoints={{
         768: {
-          // width: 768,
           slidesPerView: 3,
           spaceBetween: 30,
         },
@@ -25,7 +25,7 @@ const SliderStories = ({ sliderStories }) => {
       }}
       mousewheel={{ forceToAxis: true }}
       pagination={{ clickable: true }}
-      navigation
+      // navigation
     >
       {sliderStories.map((item) => {
         const imageProps = useNextSanityImage(sanityClient, item.image);

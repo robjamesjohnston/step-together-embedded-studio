@@ -5,11 +5,12 @@ import createSchema from "part:@sanity/base/schema-creator";
 import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // Document types
+import nav from "./documents/nav";
 import homepage from "./documents/homepage";
 import page from "./documents/page";
-import nav from "./documents/nav";
 import person from "./documents/person";
 import doc from "./documents/doc";
+import footer from "./documents/footer";
 
 // Object types
 import navSection from "./objects/navSection";
@@ -35,11 +36,12 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
+    nav,
     homepage,
     page,
-    nav,
     person,
     doc,
+    footer,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,

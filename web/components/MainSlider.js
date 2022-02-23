@@ -11,6 +11,7 @@ const MainSlider = ({ mainSlider }) => {
   return (
     <Swiper
       className="main-slider mb-8"
+      loop={true}
       autoplay={{
         delay: 5000,
       }}
@@ -20,7 +21,7 @@ const MainSlider = ({ mainSlider }) => {
       }}
       mousewheel={{ forceToAxis: true }}
       pagination={{ clickable: true }}
-      navigation
+      // navigation
     >
       {mainSlider.map((item) => {
         const imageProps = useNextSanityImage(sanityClient, item.image);

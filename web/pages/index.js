@@ -47,14 +47,19 @@ const queryHomepage = `*[_id == "homepage"][0]{
   }
 }`;
 
-const IndexPage = ({ mainNav, homepage }) => (
+const IndexPage = ({ mainNav, homepage, footer }) => (
   <Layout
     mainNav={mainNav}
     page={{ title: homepage.siteTitle }}
-    facebookLink={homepage.facebookLink}
-    twitterLink={homepage.twitterLink}
-    linkedinLink={homepage.linkedinLink}
-    youTubeLink={homepage.youTubeLink}
+    footer={{
+      compInfo: footer.companyInfo,
+      socialLinks: {
+        fbLink: footer.facebookLink,
+        twLink: footer.twitterLink,
+        liLink: footer.linkedinLink,
+        ytLink: footer.youTubeLink,
+      },
+    }}
   >
     <section className="mx-4 xs:mx-6 md:mx-8 flex flex-col">
       <MainSlider mainSlider={homepage.mainSlider} />
@@ -81,8 +86,9 @@ const IndexPage = ({ mainNav, homepage }) => (
 export const getStaticProps = async () => {
   const mainNav = await sanityClient.fetch(queryMainNav);
   const homepage = await sanityClient.fetch(queryHomepage);
+  const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
   return {
-    props: { mainNav, homepage },
+    props: { mainNav, homepage, footer },
     revalidate: 1,
   };
 };

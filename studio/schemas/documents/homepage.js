@@ -4,16 +4,16 @@ export default {
   title: "Homepage",
   preview: {
     select: {
-      title: "selection.title",
+      title: "title",
     },
     prepare(selection) {
       return {
-        title: "Step Together",
+        title: "Homepage",
       };
     },
   },
   // https://www.sanity.io/docs/experimental/ui-affordances-for-actions
-  __experimental_actions: [/*"create",*/ "update", /*"delete",*/ "publish"],
+  __experimental_actions: ["create", "update", /*"delete",*/ "publish"],
   fields: [
     {
       name: "siteTitle",
@@ -42,26 +42,6 @@ export default {
       type: "array",
       title: "Sections",
       of: [{ type: "infoBox" }, { type: "textBlock" }, { type: "slider" }],
-    },
-    {
-      name: "facebookLink",
-      type: "string",
-      title: "Facebook",
-    },
-    {
-      name: "twitterLink",
-      type: "string",
-      title: "Twitter",
-    },
-    {
-      name: "linkedinLink",
-      type: "string",
-      title: "Linkedin",
-    },
-    {
-      name: "youTubeLink",
-      type: "string",
-      title: "YouTube",
     },
   ],
 };

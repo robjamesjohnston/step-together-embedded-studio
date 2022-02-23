@@ -80,6 +80,7 @@ export default {
       name: "buttonText",
       type: "string",
       title: "Button text",
+      initialValue: "Find out more",
     },
     {
       name: "bgCol",
