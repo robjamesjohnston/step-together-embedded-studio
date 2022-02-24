@@ -23,7 +23,7 @@
     @apply font-light text-lg;
   }
   article p a {
-    @apply border-b-2 border-lime border-opacity-50 hover:border-opacity-100 text-lime;
+    @apply border-b-2 bg-white text-green;
   }
   article ul {
     @apply list-disc pl-8 font-light;
@@ -72,5 +72,9 @@
   .slider-stories .swiper-pagination-bullet,
   .slider-stories .swiper-pagination-bullet-active {
     @apply bg-green;
+  }
+
+  .donate-form input[type="number"]::placeholder {
+    @apply text-green text-2xl flex;
   }
 }

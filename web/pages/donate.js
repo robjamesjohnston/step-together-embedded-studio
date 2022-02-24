@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 import sanityClient from "../client";
 
 import Layout from "../components/Layout";
@@ -17,11 +18,17 @@ const queryMainNav = `*[handle == "main-nav"][0]{
 }`;
 
 const Donate = ({ mainNav, footer }) => {
-  const handleChange = (event) => setFrequency(event.target.value);
+  const { query } = useRouter();
+
   const [frequency, setFrequency] = useState(null);
+  const handleFrequency = (event) => setFrequency(event.target.value);
+
+  const [buttonLoading, setbuttonLoading] = useState(false);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setbuttonLoading(true);
+
     const amount = event.target.amount.value;
     const donationAmount = amount * 100;
 
@@ -38,9 +45,9 @@ const Donate = ({ mainNav, footer }) => {
 
     const result = await res.json();
 
-    console.log(result);
-
     window.location = result.authorisation_url;
+
+    setbuttonLoading(false);
   };
 
   return (
@@ -62,53 +69,62 @@ const Donate = ({ mainNav, footer }) => {
           Make a donation
         </h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col">
-          <label htmlFor="amount">Amount £</label>
-          <input
-            id="amount"
-            name="amount"
-            type="text"
-            autoComplete="amount"
-            required
-            className="border-green border-2 h-16 mt-2 mb-8 bg-white p-4"
-          />
-          <div className="md:flex">
-            <div className="flex md:w-1/2 mb-12">
-              <div className="w-1/2">
-                <label htmlFor="one-off">One off donation</label>
-                <input
-                  id="one-off"
-                  value="one-off"
-                  name="frequency"
-                  type="radio"
-                  required
-                  className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
-                  checked={frequency === "one-off"}
-                  onChange={handleChange}
-                />
+        {query.status == "success" ? (
+          <h2 className="text-3xl font-light">Thank you for your donation</h2>
+        ) : (
+          <form onSubmit={handleSubmit} className="donate-form flex flex-col">
+            <label htmlFor="amount">Amount</label>
+            <input
+              id="amount"
+              name="amount"
+              type="number"
+              pattern="^\d+(?:\.\d{1,2})?$"
+              step="0.01"
+              min="1"
+              max="5000"
+              autoComplete="amount"
+              required
+              placeholder="£"
+              className="border-green border-2 h-16 mt-2 mb-8 bg-white p-4"
+            />
+            <div className="md:flex">
+              <div className="flex md:w-1/2 mb-12">
+                <div className="w-1/2">
+                  <label htmlFor="one-off">One off donation</label>
+                  <input
+                    id="one-off"
+                    value="one-off"
+                    name="frequency"
+                    type="radio"
+                    required
+                    className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
+                    checked={frequency === "one-off"}
+                    onChange={handleFrequency}
+                  />
+                </div>
+                <div className="w-1/2">
+                  <label htmlFor="monthly">Monthly donation</label>
+                  <input
+                    id="monthly"
+                    value="monthly"
+                    name="frequency"
+                    type="radio"
+                    required
+                    className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
+                    checked={frequency === "monthly"}
+                    onChange={handleFrequency}
+                  />
+                </div>
               </div>
-              <div className="w-1/2">
-                <label htmlFor="monthly">Monthly donation</label>
-                <input
-                  id="monthly"
-                  value="monthly"
-                  name="frequency"
-                  type="radio"
-                  required
-                  className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
-                  checked={frequency === "monthly"}
-                  onChange={handleChange}
-                />
-              </div>
+              <button
+                type="submit"
+                className="transition duration-300 border-2 bg-green border-green hover:bg-white uppercase text-xl font-medium tracking-widest text-white hover:text-green p-4 mb-12  h-16 w-full md:w-1/2 md:self-end"
+              >
+                {buttonLoading ? "Loading" : "Continue"}
+              </button>
             </div>
-            <button
-              type="submit"
-              className="transition-all duration-300 border-2 bg-green border-green hover:bg-white uppercase text-xl font-medium tracking-widest text-white hover:text-green p-4 mb-12  h-16 w-full md:w-1/2 md:self-end"
-            >
-              Continue
-            </button>
-          </div>
-        </form>
+          </form>
+        )}
       </article>
     </Layout>
   );

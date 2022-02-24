@@ -4,14 +4,14 @@ import { Environments } from "gocardless-nodejs/constants";
 export default async function (req, res) {
   const client = gocardless(
     process.env.GO_CARDLESS_ACCESS_TOKEN,
-    // Change this to constants.Environments.Live when you're ready to go live
+    // Change this to Environments.Live when you're ready to go live
     Environments.Sandbox,
     { raiseOnIdempotencyConflict: true }
   );
 
   const oneOffPaymentRequest = {
     payment_request: {
-      description: "Donation to Step Together",
+      description: "One off donation to Step Together",
       amount: `${req.body.donationAmount}`,
       currency: "GBP",
     },
@@ -19,7 +19,7 @@ export default async function (req, res) {
 
   const monthlyPaymentRequest = {
     payment_request: {
-      description: "Donation to Step Together",
+      description: "First donation to Step Together",
       amount: `${req.body.donationAmount}`,
       currency: "GBP",
     },
@@ -33,8 +33,8 @@ export default async function (req, res) {
   );
 
   const billingRequestFlow = await client.billingRequestFlows.create({
-    redirect_uri: "https://step-together.vercel.app/donate", //temp
-    exit_uri: "https://step-together.vercel.app", //temp
+    redirect_uri: "https://step-together.vercel.app/donate?status=success", //temp
+    exit_uri: "https://step-together.vercel.app/donate", //temp
     links: {
       billing_request: billingRequest.id,
     },

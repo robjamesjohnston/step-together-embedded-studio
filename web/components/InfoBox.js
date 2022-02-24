@@ -82,11 +82,11 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
 
   return (
     <section className={`info-box my-8 ${backgroundCol ? backgroundCol : backupCol.bgCol}`}>
-      <div className="max-w-screen-lg m-auto px-4 py-16 xs:px-6 xs:py-24 md:px-8 md:py-32 md:flex md:space-x-8">
+      <div className="max-w-screen-lg m-auto px-4 py-8 xs:px-6 xs:py-12 md:px-8 md:py-16 md:flex md:space-x-8">
         <h2 className="text-white text-3xl pb-2 font-bold tracking-wide uppercase md:w-1/2">
           {title}
         </h2>
-        <div className="md:w-1/2 text-white text-xl md:font-light">
+        <div className="md:w-1/2 text-white text-xl font-light">
           <BlockContent
             blocks={text}
             serializers={serializers}

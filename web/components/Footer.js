@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { GrFacebookOption, GrTwitter, GrLinkedinOption, GrYoutube } from "react-icons/gr";
+import { RiExternalLinkLine } from "react-icons/ri";
 
 const Footer = ({ footer }) => {
   const { compInfo, socialLinks } = footer;
@@ -37,16 +38,18 @@ const Footer = ({ footer }) => {
             </li>
           )}
         </ul>
-        <div className="mx-4 text-center text-xs text-white">{compInfo}</div>
+        {compInfo && <div className="mx-4 text-center text-xs text-white">{compInfo}</div>}
         <Link href={"/"} passHref>
           <img src="/icon.svg" className="w-24 p-8 mx-auto cursor-pointer" alt="Step Together" />
         </Link>
       </div>
       <div className="flex justify-center items-center bg-black text-white text-xs">
         <div className="mx-2 p-2 flex">
-          &copy; 2022 Step Together Volunteering&nbsp;&nbsp;|&nbsp;&nbsp;Built by&nbsp;
-          <a href="https://rhworks.co" target="_blank" rel="noopener">
+          &copy; {new Date().getFullYear()} Step Together Volunteering<span class="mx-2">|</span>
+          Built by&nbsp;
+          <a href="https://rhworks.co" className="border-b" target="_blank" rel="noopener">
             R H Works
+            <RiExternalLinkLine className="inline ml-1 border-0 mb-1" />
           </a>
         </div>
       </div>
