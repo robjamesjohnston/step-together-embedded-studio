@@ -24,7 +24,7 @@ export default async function (req, res) {
       currency: "GBP",
     },
     mandate_request: {
-      scheme: "bacs",
+      currency: "GBP",
     },
   };
 

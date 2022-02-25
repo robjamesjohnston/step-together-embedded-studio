@@ -45,8 +45,9 @@ const Footer = ({ footer }) => {
       </div>
       <div className="flex justify-center items-center bg-black text-white text-xs">
         <div className="mx-2 p-2 flex">
-          &copy; {new Date().getFullYear()} Step Together Volunteering<span class="mx-2">|</span>
-          Built by&nbsp;
+          &copy; {new Date().getFullYear()} Step Together Volunteering
+          <span className="mx-2">|</span>
+          Built by
           <a href="https://rhworks.co" className="border-b" target="_blank" rel="noopener">
             R H Works
             <RiExternalLinkLine className="inline ml-1 border-0 mb-1" />
