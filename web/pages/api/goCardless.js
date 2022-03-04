@@ -33,8 +33,8 @@ export default async function (req, res) {
   );
 
   const billingRequestFlow = await client.billingRequestFlows.create({
-    redirect_uri: "https://step-together.vercel.app/donate?status=success", //temp
-    exit_uri: "https://step-together.vercel.app/donate", //temp
+    redirect_uri: "https://step-together.org.uk/donate?status=success",
+    exit_uri: "https://step-together.org.uk/donate",
     links: {
       billing_request: billingRequest.id,
     },

@@ -22,7 +22,8 @@
   article ul {
     @apply font-light text-lg;
   }
-  article p a {
+  article p a,
+  article h2 a {
     @apply border-b-2 bg-white text-green;
   }
   article ul {
@@ -39,7 +40,6 @@
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
   }
-
   .main-slider .swiper-button-prev,
   .main-slider .swiper-button-next,
   .main-slider .swiper-button-disabled,
@@ -48,18 +48,6 @@
   .slider-stories .swiper-button-disabled {
     @apply text-white hover:text-green;
   }
-
-  /* .main-slider.swiper-container,
-  .slider-stories.swiper-container {
-    @apply overflow-visible;
-  } */
-
-  /* .main-slider .swiper-pagination-fraction,
-  .main-slider .swiper-pagination-custom,
-  .main-slider .swiper-pagination-bullets {
-    @apply bottom-8;
-  } */
-
   .slider-stories .swiper-pagination-fraction,
   .slider-stories .swiper-pagination-custom,
   .slider-stories .swiper-pagination-bullets {
@@ -72,9 +60,5 @@
   .slider-stories .swiper-pagination-bullet,
   .slider-stories .swiper-pagination-bullet-active {
     @apply bg-green;
-  }
-
-  .donate-form input[type="number"]::placeholder {
-    @apply text-green text-2xl flex;
   }
 }

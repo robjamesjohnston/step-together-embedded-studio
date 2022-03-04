@@ -6,8 +6,8 @@ const Footer = ({ footer }) => {
   const { compInfo, socialLinks } = footer;
   const { fbLink, twLink, liLink, ytLink } = socialLinks;
   return (
-    <footer>
-      <div className="bg-darkGrey mt-8">
+    <footer className="mt-16">
+      <div className="bg-darkGrey">
         <ul className="p-8 flex justify-center text-3xl text-lime">
           {fbLink && (
             <li className="mx-2">
@@ -38,12 +38,14 @@ const Footer = ({ footer }) => {
             </li>
           )}
         </ul>
-        {compInfo && <div className="mx-4 text-center text-xs text-white">{compInfo}</div>}
+        {compInfo && (
+          <div className="mx-4 text-center text-white text-xs font-light">{compInfo}</div>
+        )}
         <Link href={"/"} passHref>
           <img src="/icon.svg" className="w-24 p-8 mx-auto cursor-pointer" alt="Step Together" />
         </Link>
       </div>
-      <div className="flex justify-center items-center bg-black text-white text-xs">
+      <div className="flex justify-center items-center bg-black text-white text-xs font-light">
         <div className="mx-2 p-2 flex">
           &copy; {new Date().getFullYear()} Step Together Volunteering
           <span className="mx-2">|</span>

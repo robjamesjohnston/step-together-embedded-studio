@@ -24,7 +24,10 @@ module.exports = {
     },
     extend: {
       spacing: {
-        18: "4.5rem",
+        "18": "4.5rem",
+      },
+      zIndex: {
+        "999": "999",
       },
       fontFamily: {
         sans: ["'Space Grotesk'", ...defaultTheme.fontFamily.sans],

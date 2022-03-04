@@ -72,21 +72,28 @@ const Donate = ({ mainNav, footer }) => {
         {query.status == "success" ? (
           <h2 className="text-3xl font-light">Thank you for your donation</h2>
         ) : (
-          <form onSubmit={handleSubmit} className="donate-form flex flex-col">
+          <form
+            onSubmit={handleSubmit}
+            className="donate-form flex flex-col max-w-screen-sm mx-auto"
+          >
             <label htmlFor="amount">Amount</label>
-            <input
-              id="amount"
-              name="amount"
-              type="number"
-              pattern="^\d+(?:\.\d{1,2})?$"
-              step="0.01"
-              min="1"
-              max="5000"
-              autoComplete="amount"
-              required
-              placeholder="£"
-              className="border-green border-2 h-16 mt-2 mb-8 bg-white p-4"
-            />
+            <div className="flex border-green border-2 h-16 mb-8">
+              <div className="flex justify-center items-center w-1/12">
+                <span className="text-green text-4xl">£</span>
+              </div>
+              <input
+                id="amount"
+                name="amount"
+                type="number"
+                pattern="^\d+(?:\.\d{1,2})?$"
+                step="0.01"
+                min="1"
+                max="5000"
+                autoComplete="amount"
+                required
+                className="text-2xl font-medium tracking-widest text-darkGrey py-4 pr-4 w-11/12"
+              />
+            </div>
             <div className="md:flex">
               <div className="flex md:w-1/2 mb-12">
                 <div className="w-1/2">

@@ -71,7 +71,9 @@ const NavBar = ({ mainNav }) => {
       }`}
     >
       {/* Donate button */}
-      <div className="flex-1">{/* <NavBarDonate /> */}</div>
+      <div className="flex-1">
+        <NavBarDonate />
+      </div>
 
       {/* Main logo */}
       <div className="flex-none">
