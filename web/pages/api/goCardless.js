@@ -2,12 +2,9 @@ import gocardless from "gocardless-nodejs";
 import { Environments } from "gocardless-nodejs/constants";
 
 export default async function (req, res) {
-  const client = gocardless(
-    process.env.GO_CARDLESS_ACCESS_TOKEN,
-    // Change this to Environments.Live when you're ready to go live
-    Environments.Sandbox,
-    { raiseOnIdempotencyConflict: true }
-  );
+  const client = gocardless(process.env.GO_CARDLESS_ACCESS_TOKEN, Environments.Live, {
+    raiseOnIdempotencyConflict: true,
+  });
 
   const oneOffPaymentRequest = {
     payment_request: {
