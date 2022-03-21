@@ -10,7 +10,11 @@ const GroupButton = ({ title, text, bgCol, link }) => (
     condition={link}
     wrapper={(children) => {
       return link.external ? (
-        <a href={link.external} target="_blank" rel="noopener">
+        <a
+          href={link.external}
+          target={link.external === "https://step-together.org.uk/donate" ? "_self" : "_blank"}
+          rel="noopener"
+        >
           {children}
         </a>
       ) : (
