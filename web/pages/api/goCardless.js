@@ -1,8 +1,16 @@
 import gocardless from "gocardless-nodejs";
 import { Environments } from "gocardless-nodejs/constants";
 
+const GC_ACCESS_TOKEN =
+  process.env.NODE_ENV === "production"
+    ? process.env.GO_CARDLESS_ACCESS_TOKEN
+    : process.env.GO_CARDLESS_ACCESS_TOKEN_DEV;
+
+const GC_ENVIRONMENT =
+  process.env.NODE_ENV === "production" ? Environments.Live : Environments.Sandbox;
+
 export default async function (req, res) {
-  const client = gocardless(process.env.GO_CARDLESS_ACCESS_TOKEN, Environments.Live, {
+  const client = gocardless(GC_ACCESS_TOKEN, GC_ENVIRONMENT, {
     raiseOnIdempotencyConflict: true,
   });
 
