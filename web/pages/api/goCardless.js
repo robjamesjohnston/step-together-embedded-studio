@@ -37,8 +37,10 @@ export default async function (req, res) {
     req.body.frequency === "one-off" ? oneOffPaymentRequest : monthlyPaymentRequest
   );
 
+  const redirectUri = req.body.frequency === "one-off" ? "" : "monthly_";
+
   const billingRequestFlow = await client.billingRequestFlows.create({
-    redirect_uri: "https://step-together.org.uk/donate?status=success",
+    redirect_uri: `https://step-together.org.uk/donate?status=${redirectUri}donation_success`,
     exit_uri: "https://step-together.org.uk/donate",
     links: {
       billing_request: billingRequest.id,

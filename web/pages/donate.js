@@ -69,8 +69,10 @@ const Donate = ({ mainNav, footer }) => {
           Make a donation
         </h1>
 
-        {query.status == "success" ? (
+        {query.status == "donation_success" ? (
           <h2 className="text-3xl font-light">Thank you for your donation</h2>
+        ) : query.status == "monthly_donation_success" ? (
+          <h2 className="text-3xl font-light">Thank you for monthly donation</h2>
         ) : (
           <form
             onSubmit={handleSubmit}
