@@ -31,9 +31,13 @@ const NavBarSubList = ({ item, closeMenu }) => {
             key={uuidv4()}
             className="text-white hover:text-lime transition duration-300 font-light py-2 pl-4 border-t"
           >
-            <ActiveLink href={item2.target.slug.current}>
-              <a onClick={closeMenu}>{item2.title ? item2.title : item2.target.title}</a>
-            </ActiveLink>
+            {item2.target ? (
+              <ActiveLink href={item2.target.slug.current}>
+                <a onClick={closeMenu}>{item2.title ? item2.title : item2.target.title}</a>
+              </ActiveLink>
+            ) : (
+              item2.title
+            )}
           </li>
         ))}
       </ul>
