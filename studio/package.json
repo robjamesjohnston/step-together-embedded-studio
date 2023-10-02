@@ -1,32 +1,23 @@
 {
   "private": true,
   "name": "studio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "scripts": {
-    "dev": "sanity start",
+    "start": "sanity start",
     "build": "sanity build -y",
-    "test": "sanity check"
+    "dev": "sanity dev"
   },
   "dependencies": {
-    "@sanity/base": "^2.20.0",
-    "@sanity/components": "^2.14.0",
-    "@sanity/core": "^2.20.0",
-    "@sanity/dashboard": "^2.20.0",
-    "@sanity/default-layout": "^2.20.0",
-    "@sanity/default-login": "^2.19.0",
-    "@sanity/desk-tool": "^2.20.0",
-    "@sanity/production-preview": "^2.15.0",
-    "@sanity/vision": "^2.20.0",
-    "prop-types": "^15.7",
-    "react": "^17.0",
-    "react-dom": "^17.0",
-    "react-icons": "^4.2.0",
-    "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
-    "sanity-plugin-dashboard-widget-vercel": "^1.1.0",
-    "sanity-plugin-iframe-pane": "^1.0.8",
-    "styled-components": "^5.2.0"
+    "@sanity/dashboard": "^3.1.5",
+    "@sanity/vision": "^3.16.7",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.11.0",
+    "sanity": "^3.16.7",
+    "sanity-plugin-dashboard-widget-document-list": "^1.0.1",
+    "sanity-plugin-dashboard-widget-vercel": "^2.0.1",
+    "styled-components": "^5.3.11"
   },
-  "devDependencies": {
-    "@sanity/cli": "^2.20.0"
-  }
+  "devDependencies": {}
 }

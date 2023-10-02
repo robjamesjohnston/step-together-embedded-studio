@@ -12,8 +12,6 @@ export default {
       };
     },
   },
-  // https://www.sanity.io/docs/experimental/ui-affordances-for-actions
-  __experimental_actions: ["create", "update", /*"delete",*/ "publish"],
   fields: [
     {
       name: "facebookLink",
