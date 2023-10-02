@@ -40,7 +40,7 @@ const MainSlider = ({ mainSlider }) => {
 
         return (
           <SwiperSlide key={item._key} className="hover:opacity-75 transition-all duration-300">
-            <Link href={item.target.slug.current}>
+            <Link legacyBehavior href={item.target.slug.current}>
               <a className="lg:flex">
                 {/* 4, 2, 1 – 16:9
                     3, 2, 1 – 6:4 */}

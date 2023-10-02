@@ -41,7 +41,7 @@ const Footer = ({ footer }) => {
         {compInfo && (
           <div className="mx-4 text-center text-white text-xs font-light">{compInfo}</div>
         )}
-        <Link href={"/"} passHref>
+        <Link legacyBehavior href={"/"} passHref>
           <img src="/icon.svg" className="w-24 p-8 mx-auto cursor-pointer" alt="Step Together" />
         </Link>
       </div>

@@ -44,7 +44,7 @@ const SliderStories = ({ sliderStories }) => {
 
         return (
           <SwiperSlide key={item._key} className="hover:opacity-75 transition-all duration-300">
-            <Link href={item.target.slug.current}>
+            <Link legacyBehavior href={item.target.slug.current}>
               <a>
                 <figure className="aspect-h-1 aspect-w-1">
                   <Image

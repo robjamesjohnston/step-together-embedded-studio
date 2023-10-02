@@ -175,6 +175,7 @@ const Page = ({ mainNav, page, footer }) => {
           wrapper={(children) => {
             return (
               <Link
+                legacyBehavior
                 href={
                   props.mark.reference.slug
                     ? props.mark.reference.slug.current

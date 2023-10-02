@@ -19,6 +19,7 @@ const GroupButton = ({ title, text, bgCol, link }) => (
         </a>
       ) : (
         <Link
+          legacyBehavior
           href={link.internal.slug ? link.internal.slug.current : `${link.internal.fileURL}?dl=`}
         >
           <a>{children}</a>

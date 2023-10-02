@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const NavBarLogo = ({ offset, isBreakpoint }) => {
   return (
-    <Link href="/">
+    <Link legacyBehavior href="/">
       <a>
         {offset ? (
           isBreakpoint ? (

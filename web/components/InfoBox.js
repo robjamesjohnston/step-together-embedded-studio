@@ -43,6 +43,7 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
           wrapper={(children) => {
             return (
               <Link
+                legacyBehavior
                 href={
                   props.mark.reference.slug
                     ? props.mark.reference.slug.current
@@ -102,6 +103,7 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
                 </a>
               ) : (
                 <Link
+                  legacyBehavior
                   href={
                     link.internal.slug ? link.internal.slug.current : `${link.internal.fileURL}?dl=`
                   }
