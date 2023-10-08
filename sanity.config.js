@@ -4,33 +4,12 @@ import { vercelWidget } from "sanity-plugin-dashboard-widget-vercel";
 import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list";
 import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
-import schemas from "./schemas/schema";
-import deskStructure from "./deskStructure";
-import Iframe from "sanity-plugin-iframe-pane";
-
-function getPreviewUrl(doc) {
-  return doc?.slug?.current ? `https://www.step-together.org.uk/${doc.slug.current}` : window.location.host;
-}
-
-const defaultDocumentNode = (S, { schemaType }) => {
-  // Only show preview pane on `movie` schema type documents
-  switch (schemaType) {
-    case "page":
-      return S.document().views([
-        S.view.form(),
-        S.view
-          .component(Iframe)
-          .options({
-            url: (doc) => getPreviewUrl(doc),
-          })
-          .title("Preview"),
-      ]);
-    default:
-      return S.document().views([S.view.form()]);
-  }
-};
+import defaultDocumentNode from "./studio/defaultDocumentNode";
+import deskStructure from "./studio/deskStructure";
+import schemas from "./studio/schemas/schema";
 
 export default defineConfig({
+  basePath: "/studio",
   title: "Step Together",
   projectId: "1soudqhb",
   dataset: "production",
@@ -51,18 +30,18 @@ export default defineConfig({
       ],
     }),
     deskTool({
-      defaultDocumentNode,
+      defaultDocumentNode: defaultDocumentNode,
       structure: deskStructure,
     }),
     visionTool(),
   ],
-  tools: (prev) => {
-    // Uses environment variables set by Vite in development mode
-    if (import.meta.env.DEV) {
-      return prev;
-    }
-    return prev.filter((tool) => tool.name !== "vision");
-  },
+  // tools: (prev) => {
+  //   // Uses environment variables set by Vite in development mode
+  //   if (import.meta.env.DEV) {
+  //     return prev;
+  //   }
+  //   return prev.filter((tool) => tool.name !== "vision");
+  // },
   schema: {
     types: schemas,
   },

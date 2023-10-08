@@ -1,4 +1,4 @@
-import sanityClient from "../client";
+import sanityClient from "../studio/sanityClient";
 
 import Layout from "../components/Layout";
 import MainSlider from "../components/MainSlider";

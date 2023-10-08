@@ -1,4 +1,4 @@
-import sanityClient from "../client";
+import sanityClient from "../studio/sanityClient";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 

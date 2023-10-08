@@ -1,5 +1,5 @@
 import { useState } from "react";
-import sanityClient from "../client";
+import sanityClient from "../studio/sanityClient";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import { MdExpandMore, MdExpandLess } from "react-icons/md";

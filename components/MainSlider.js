@@ -1,23 +1,19 @@
-import sanityClient from "../client";
-import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination } from "swiper";
+import sanityClient from "../studio/sanityClient";
+import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination, Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import Link from "next/link";
 
-SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination]);
+SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination, Autoplay]);
 
-const SliderStories = ({ sliderStories }) => {
+const MainSlider = ({ mainSlider }) => {
   return (
     <Swiper
-      className="slider-stories section-margin my-8"
+      className="main-slider mb-8 w-full"
       loop={true}
-      watchOverflow={true}
-      breakpoints={{
-        768: {
-          slidesPerView: 3,
-          spaceBetween: 30,
-        },
+      autoplay={{
+        delay: 5000,
       }}
       keyboard={{
         enabled: true,
@@ -27,39 +23,42 @@ const SliderStories = ({ sliderStories }) => {
       pagination={{ clickable: true }}
       // navigation
     >
-      {sliderStories.map((item) => {
+      {mainSlider.map((item) => {
         const imageProps = useNextSanityImage(sanityClient, item.image);
 
-        let textCol;
+        let bgCol;
         switch (item.clientGroupCol) {
           case "red":
-            textCol = "text-red";
+            bgCol = "bg-red";
             break;
           case "lightGreen":
-            textCol = "text-lightGreen";
+            bgCol = "bg-lightGreen";
             break;
           case "orange":
-            textCol = "text-orange";
+            bgCol = "bg-orange";
         }
 
         return (
           <SwiperSlide key={item._key} className="hover:opacity-75 transition-all duration-300">
             <Link legacyBehavior href={item.target.slug.current}>
-              <a>
-                <figure className="relative aspect-h-1 aspect-w-1">
+              <a className="lg:flex">
+                {/* 4, 2, 1 – 16:9
+                    3, 2, 1 – 6:4 */}
+                <figure className="relative aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2">
                   <Image
-                    className="rounded-full"
-                    alt={item.altText}
                     src={imageProps.src}
+                    alt={item.altText}
                     loader={imageProps.loader}
                     fill={true}
                     style={{objectFit: "cover"}}
                     loading="lazy"
                   />
                 </figure>
-                <h2 className={`${textCol} text-3xl uppercase font-bold text-center mt-16`}>
-                  {item.title}
-                </h2>
+                <div className={`${bgCol} aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2`}>
+                  <h2 className="p-4 text-5xl xs:text-6xl xl:text-7xl font-bold tracking-wide uppercase text-white">
+                    {item.title}
+                  </h2>
+                </div>
               </a>
             </Link>
           </SwiperSlide>
@@ -69,4 +68,4 @@ const SliderStories = ({ sliderStories }) => {
   );
 };
 
-export default SliderStories;
+export default MainSlider;

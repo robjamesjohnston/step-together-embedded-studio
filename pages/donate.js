@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
-import sanityClient from "../client";
+import sanityClient from "../studio/sanityClient";
 
 import Layout from "../components/Layout";
 

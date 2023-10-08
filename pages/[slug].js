@@ -1,4 +1,4 @@
-import sanityClient from "../client";
+import sanityClient from "../studio/sanityClient";
 import BlockContent from "@sanity/block-content-to-react";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
