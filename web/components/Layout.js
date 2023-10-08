@@ -7,9 +7,9 @@ import Footer from "./Footer";
 const Layout = ({ mainNav, page, children, footer }) => (
   <>
     <HeadComp page={page} />
-    <section className="wrapper bg-white">
+    <section className="wrapper bg-black bg-opacity-10">
       <Header mainNav={mainNav} />
-      <main className="max-w-screen-lg m-auto">{children}</main>
+      <main className="max-w-screen-xl bg-white mx-auto pb-16">{children}</main>
       <Footer footer={footer} />
     </section>
     <CookieConsent

@@ -6,6 +6,29 @@ import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import schemas from "./schemas/schema";
 import deskStructure from "./deskStructure";
+import Iframe from "sanity-plugin-iframe-pane";
+
+function getPreviewUrl(doc) {
+  return doc?.slug?.current ? `https://www.step-together.org.uk/${doc.slug.current}` : window.location.host;
+}
+
+const defaultDocumentNode = (S, { schemaType }) => {
+  // Only show preview pane on `movie` schema type documents
+  switch (schemaType) {
+    case "page":
+      return S.document().views([
+        S.view.form(),
+        S.view
+          .component(Iframe)
+          .options({
+            url: (doc) => getPreviewUrl(doc),
+          })
+          .title("Preview"),
+      ]);
+    default:
+      return S.document().views([S.view.form()]);
+  }
+};
 
 export default defineConfig({
   title: "Step Together",
@@ -28,6 +51,7 @@ export default defineConfig({
       ],
     }),
     deskTool({
+      defaultDocumentNode,
       structure: deskStructure,
     }),
     visionTool(),

@@ -6,7 +6,7 @@ const Footer = ({ footer }) => {
   const { compInfo, socialLinks } = footer;
   const { fbLink, twLink, liLink, ytLink } = socialLinks;
   return (
-    <footer className="mt-16">
+    <footer>
       <div className="bg-darkGrey">
         <ul className="p-8 flex justify-center text-3xl text-lime">
           {fbLink && (

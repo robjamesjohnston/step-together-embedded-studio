@@ -10,7 +10,7 @@ SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination]);
 const SliderStories = ({ sliderStories }) => {
   return (
     <Swiper
-      className="slider-stories my-8 mx-0"
+      className="slider-stories section-margin my-8"
       loop={true}
       watchOverflow={true}
       breakpoints={{
@@ -46,14 +46,15 @@ const SliderStories = ({ sliderStories }) => {
           <SwiperSlide key={item._key} className="hover:opacity-75 transition-all duration-300">
             <Link legacyBehavior href={item.target.slug.current}>
               <a>
-                <figure className="aspect-h-1 aspect-w-1">
+                <figure className="relative aspect-h-1 aspect-w-1">
                   <Image
                     className="rounded-full"
                     alt={item.altText}
                     src={imageProps.src}
                     loader={imageProps.loader}
-                    layout="fill"
-                    objectFit="cover"
+                    fill={true}
+                    style={{objectFit: "cover"}}
+                    loading="lazy"
                   />
                 </figure>
                 <h2 className={`${textCol} text-3xl uppercase font-bold text-center mt-16`}>

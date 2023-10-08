@@ -10,7 +10,7 @@ SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination, Autoplay]);
 const MainSlider = ({ mainSlider }) => {
   return (
     <Swiper
-      className="main-slider mb-8"
+      className="main-slider mb-8 w-full"
       loop={true}
       autoplay={{
         delay: 5000,
@@ -44,17 +44,18 @@ const MainSlider = ({ mainSlider }) => {
               <a className="lg:flex">
                 {/* 4, 2, 1 – 16:9
                     3, 2, 1 – 6:4 */}
-                <figure className="aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2">
+                <figure className="relative aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2">
                   <Image
-                    alt={item.altText}
                     src={imageProps.src}
+                    alt={item.altText}
                     loader={imageProps.loader}
-                    layout="fill"
-                    objectFit="cover"
+                    fill={true}
+                    style={{objectFit: "cover"}}
+                    loading="lazy"
                   />
                 </figure>
                 <div className={`${bgCol} aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2`}>
-                  <h2 className="p-4 text-5xl xs:text-7xl xl:text-8xl font-bold tracking-wide uppercase text-white">
+                  <h2 className="p-4 text-5xl xs:text-6xl xl:text-7xl font-bold tracking-wide uppercase text-white">
                     {item.title}
                   </h2>
                 </div>

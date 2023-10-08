@@ -1,9 +1,7 @@
 const { screens } = require("tailwindcss/defaultTheme");
-const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
-  darkMode: false, // or 'media' or 'class'
   theme: {
     screens: {
       xs: "520px",
@@ -28,13 +26,12 @@ module.exports = {
       zIndex: {
         "999": "999",
       },
-      fontFamily: {
-        sans: ["'Space Grotesk'", ...defaultTheme.fontFamily.sans],
-      },
     },
   },
-  variants: {
-    extend: {},
+  corePlugins: {
+    aspectRatio: false,
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };

@@ -8,7 +8,7 @@ const ArticleImage = (props) => {
     <figure
       // 8, 4, 3 – 16:9
       // 6, 4, 3 – 6:4
-      className={`aspect-w-6 my-8 ${
+      className={`relative aspect-w-6 my-8 ${
         props.node.alignment === "right"
           ? "aspect-h-4 md:aspect-h-2 md:w-1/2 md:self-end"
           : props.node.alignment === "full"
@@ -22,8 +22,9 @@ const ArticleImage = (props) => {
         src={blockImageProps.src}
         alt={props.node.altText}
         loader={blockImageProps.loader}
-        layout="fill"
-        objectFit="cover"
+        fill={true}
+        style={{objectFit: "cover"}}
+        loading="lazy"
       />
     </figure>
   );

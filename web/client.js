@@ -1,9 +1,11 @@
-import sanityClient from "@sanity/client";
+import {createClient} from '@sanity/client'
 
-export default sanityClient({
+const sanityClient = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
-  apiVersion: "2021-07-08", // use a UTC date string
+  apiVersion: "2023-10-01", // use a UTC date string
   token: "", // or leave blank to be anonymous user
-  useCdn: true, // `false` if you want to ensure fresh data
+  useCdn: false, // `false` if you want to ensure fresh data
 });
+
+export default sanityClient;

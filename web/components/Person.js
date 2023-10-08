@@ -34,14 +34,15 @@ const Person = ({ name, job, area, bio, image, colors }) => {
   return (
     <section>
       {image && (
-        <figure className="aspect-w-1 aspect-h-1 mb-4">
+        <figure className="relative aspect-w-1 aspect-h-1 mb-4">
           <Image
             className="rounded-full"
             src={personImageProps.src}
             alt={name}
             loader={personImageProps.loader}
-            layout="fill"
-            objectFit="cover"
+            fill={true}
+            style={{objectFit: "cover"}}
+            loading="lazy"
           />
         </figure>
       )}

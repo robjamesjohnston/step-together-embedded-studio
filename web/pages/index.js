@@ -61,7 +61,7 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
       },
     }}
   >
-    <section className="mx-4 xs:mx-6 md:mx-8 flex flex-col">
+    <section className="flex flex-col">
       <MainSlider mainSlider={homepage.mainSlider} />
       <TextBlock text={homepage.siteSummary} />
       <GroupButtons groupButtons={homepage.clientGroupButtons} />
