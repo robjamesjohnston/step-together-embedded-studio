@@ -12,8 +12,8 @@ const StandoutCopy = ({ text, textCol }) => {
   }
 
   return (
-    <section className="text-block section-margin my-8">
-      <p className={`${textColor} text-3xl font-light`}>{text}</p>
+    <section className="text-block section-margin my-16">
+      <p className={`${textColor} text-3xl font-light mb-0`}>{text}</p>
     </section>
   );
 };

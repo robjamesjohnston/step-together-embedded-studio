@@ -64,8 +64,8 @@ const Donate = ({ mainNav, footer }) => {
         },
       }}
     >
-      <article className="section-margin text-darkGrey">
-        <h1 className="text-green mb-8 text-xl font-bold uppercase tracking-wide">
+      <article className="section-margin text-darkGrey pb-16">
+        <h1 className="text-green mb-8 text-xl font-bold uppercase tracking-wide xl:pt-6">
           Make a donation
         </h1>
 

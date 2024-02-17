@@ -144,8 +144,8 @@ const Page = ({ mainNav, page, footer }) => {
   }
 
   const overrides = {
-    h2: (props) => <h2 className={`text-3xl font-light mb-8`} {...props} />,
-    h3: (props) => <h3 className="mb-8 text-xl font-bold uppercase tracking-wide" {...props} />,
+    h2: (props) => <h2 className="mb-8 section-margin text-3xl font-light" {...props} />,
+    h3: (props) => <h3 className="mb-8 section-margin text-xl font-bold uppercase tracking-wide" {...props} />,
   };
 
   const serializers = {
@@ -227,8 +227,8 @@ const Page = ({ mainNav, page, footer }) => {
         },
       }}
     >
-      <article className="text-darkGrey">
-        <h1 className={`${colors.textCol} mb-8 text-xl font-bold uppercase tracking-wide section-margin`}>
+      <article className="text-darkGrey pb-16">
+        <h1 className={`${colors.textCol} mb-8 text-xl font-bold uppercase tracking-wide section-margin xl:pt-6`}>
           {page.title}
         </h1>
         <BlockContent

@@ -1,7 +1,7 @@
 import Person from "./Person";
 
 const People = ({ peopleProps, colors }) => (
-  <section className="group-people my-8 grid gap-4 xs:gap-6 md:gap-8 grid-cols-2 md:grid-cols-4">
+  <section className="group-people section-margin grid gap-4 xs:gap-6 md:gap-8 grid-cols-2 md:grid-cols-4">
     {peopleProps.map((item) => {
       const { _id, name, job, area, bio, image } = item.groupPeopleResolved;
       return (

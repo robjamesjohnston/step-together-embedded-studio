@@ -10,7 +10,7 @@ SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination, Autoplay]);
 const MainSlider = ({ mainSlider }) => {
   return (
     <Swiper
-      className="main-slider mb-8 w-full"
+      className="main-slider w-full"
       loop={true}
       autoplay={{
         delay: 5000,

@@ -10,7 +10,7 @@ SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination]);
 const SliderStories = ({ sliderStories }) => {
   return (
     <Swiper
-      className="slider-stories section-margin my-8"
+      className="slider-stories section-margin my-16"
       loop={true}
       watchOverflow={true}
       breakpoints={{
