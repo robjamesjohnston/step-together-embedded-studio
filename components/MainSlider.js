@@ -1,15 +1,14 @@
 import sanityClient from "../studio/sanityClient";
-import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination, Autoplay } from "swiper";
+import { Keyboard, Mousewheel, Navigation, Pagination, Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import Link from "next/link";
 
-SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination, Autoplay]);
-
 const MainSlider = ({ mainSlider }) => {
   return (
     <Swiper
+    modules={[Keyboard, Mousewheel, Navigation, Pagination, Autoplay]}
       className="main-slider w-full"
       loop={true}
       autoplay={{

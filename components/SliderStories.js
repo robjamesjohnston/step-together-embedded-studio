@@ -1,15 +1,14 @@
 import sanityClient from "../studio/sanityClient";
-import SwiperCore, { Keyboard, Mousewheel, Navigation, Pagination } from "swiper";
+import { Keyboard, Mousewheel, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import Link from "next/link";
 
-SwiperCore.use([Keyboard, Mousewheel, Navigation, Pagination]);
-
 const SliderStories = ({ sliderStories }) => {
   return (
     <Swiper
+      modules={[Keyboard, Mousewheel, Navigation, Pagination]}
       className="slider-stories section-margin my-16"
       loop={true}
       watchOverflow={true}
