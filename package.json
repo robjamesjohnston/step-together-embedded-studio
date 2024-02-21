@@ -25,7 +25,6 @@
     "prop-types": "^15.8.1",
     "sanity": "^3.16.7",
     "sanity-plugin-dashboard-widget-document-list": "^1.0.1",
-    "sanity-plugin-dashboard-widget-vercel": "^2.0.1",
     "sanity-plugin-iframe-pane": "^2.5.7",
     "styled-components": "^5.3.11"
   },

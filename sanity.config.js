@@ -1,6 +1,5 @@
 import { defineConfig } from "sanity";
 import { dashboardTool, projectUsersWidget } from "@sanity/dashboard";
-import { vercelWidget } from "sanity-plugin-dashboard-widget-vercel";
 import { documentListWidget } from "sanity-plugin-dashboard-widget-document-list";
 import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
@@ -16,7 +15,6 @@ export default defineConfig({
   plugins: [
     dashboardTool({
       widgets: [
-        vercelWidget(),
         documentListWidget({
           layout: { width: "large" },
           title: "Recent pages",
