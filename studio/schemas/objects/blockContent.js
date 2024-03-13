@@ -81,6 +81,9 @@ export default {
       type: "infoBox",
     },
     {
+      type: "iframe",
+    },
+    {
       type: "singleButton",
     },
     {

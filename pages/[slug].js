@@ -9,6 +9,7 @@ import Layout from "../components/Layout";
 import ArticleImage from "../components/ArticleImage";
 import QuoteBox from "../components/QuoteBox";
 import InfoBox from "../components/InfoBox";
+import Iframe from "../components/Iframe";
 import SingleButton from "../components/SingleButton";
 import GroupButtons from "../components/GroupButtons";
 import People from "../components/People";
@@ -161,6 +162,7 @@ const Page = ({ mainNav, page, footer }) => {
       articleImage: ArticleImage,
       quoteBox: (props) => <QuoteBox quoteBoxProps={props.node} colors={colors} />,
       infoBox: (props) => <InfoBox infoBoxProps={props.node} backupCol={colors} />,
+      iframe: Iframe,
       singleButton: (props) => <SingleButton buttonProps={props.node} colors={colors} />,
       multipleButtons: (props) => (
         <GroupButtons groupButtons={props.node.groupButtons} backupCol={colors.bgCol} />

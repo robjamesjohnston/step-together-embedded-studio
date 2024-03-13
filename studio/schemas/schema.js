@@ -14,6 +14,7 @@ import slider from "./objects/slider";
 import sliderImage from "./objects/sliderImage";
 import groupButton from "./objects/groupButton";
 import infoBox from "./objects/infoBox";
+import iframe from "./objects/iframe";
 import textBlock from "./objects/textBlock";
 import articleImage from "./objects/articleImage";
 import quoteBox from "./objects/quoteBox";
@@ -39,6 +40,7 @@ export default [
   sliderImage,
   groupButton,
   infoBox,
+  iframe,
   textBlock,
   articleImage,
   quoteBox,
