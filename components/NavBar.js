@@ -7,7 +7,7 @@ import NavBarLogo from "./NavBarLogo";
 import NavBarList from "./NavBarList";
 import NavBarSubList from "./NavBarSubList";
 
-const NavBar = ({ mainNav }) => {
+const NavBar = ({ mainNav, headerLogo }) => {
   const [open, setOpen] = useState(false);
   const [offset, setOffset] = useState(false);
 
@@ -77,7 +77,7 @@ const NavBar = ({ mainNav }) => {
 
       {/* Main logo */}
       <div className="flex-none">
-        <NavBarLogo offset={offset} isBreakpoint={isBreakpoint} />
+        <NavBarLogo offset={offset} isBreakpoint={isBreakpoint} headerLogo={headerLogo} />
       </div>
 
       {/* Burger menu */}

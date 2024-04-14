@@ -87,7 +87,7 @@ const ConditionalWrapper = ({ condition, wrapper, children }) => {
   return condition ? wrapper(children) : children;
 };
 
-const Page = ({ mainNav, page, footer }) => {
+const Page = ({ mainNav, homepage, page, footer }) => {
   const router = useRouter();
   if (router.isFallback) {
     return <p>Loading...</p>;
@@ -218,6 +218,7 @@ const Page = ({ mainNav, page, footer }) => {
   return (
     <Layout
       mainNav={mainNav}
+      headerLogo={homepage.headerLogo}
       page={page}
       footer={{
         compInfo: footer.companyInfo,
@@ -247,10 +248,11 @@ const Page = ({ mainNav, page, footer }) => {
 
 export const getStaticProps = async (context) => {
   const mainNav = await sanityClient.fetch(queryMainNav);
+  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo}`);
   const page = await sanityClient.fetch(queryPage, { slug: context.params.slug });
   const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
   return {
-    props: { mainNav, page, footer },
+    props: { mainNav, homepage, page, footer },
     revalidate: 1,
   };
 };

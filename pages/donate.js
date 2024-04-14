@@ -17,7 +17,7 @@ const queryMainNav = `*[handle == "main-nav"][0]{
   }
 }`;
 
-const Donate = ({ mainNav, footer }) => {
+const Donate = ({ mainNav, homepage, footer }) => {
   const { query } = useRouter();
 
   const [frequency, setFrequency] = useState(null);
@@ -53,6 +53,7 @@ const Donate = ({ mainNav, footer }) => {
   return (
     <Layout
       mainNav={mainNav}
+      headerLogo={homepage.headerLogo}
       page={{ title: "Donate" }}
       footer={{
         compInfo: footer.companyInfo,
@@ -141,9 +142,10 @@ const Donate = ({ mainNav, footer }) => {
 
 export const getStaticProps = async () => {
   const mainNav = await sanityClient.fetch(queryMainNav);
+  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo}`);
   const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
   return {
-    props: { mainNav, footer },
+    props: { mainNav, homepage, footer },
     revalidate: 1,
   };
 };

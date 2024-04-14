@@ -50,6 +50,7 @@ const queryHomepage = `*[_id == "homepage"][0]{
 const IndexPage = ({ mainNav, homepage, footer }) => (
   <Layout
     mainNav={mainNav}
+    headerLogo={homepage.headerLogo}
     page={{ title: homepage.siteTitle }}
     footer={{
       compInfo: footer.companyInfo,

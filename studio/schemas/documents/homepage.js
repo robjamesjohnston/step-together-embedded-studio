@@ -14,6 +14,11 @@ export default {
   },
   fields: [
     {
+      name: "headerLogo",
+      type: "image",
+      title: "Header logo",
+    },
+    {
       name: "siteTitle",
       type: "string",
       title: "Site title",
