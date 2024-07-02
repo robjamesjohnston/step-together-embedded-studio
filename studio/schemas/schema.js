@@ -13,6 +13,7 @@ import blockContent from "./objects/blockContent";
 import slider from "./objects/slider";
 import sliderImage from "./objects/sliderImage";
 import groupButton from "./objects/groupButton";
+import articleCard from "./objects/articleCard";
 import infoBox from "./objects/infoBox";
 import iframe from "./objects/iframe";
 import textBlock from "./objects/textBlock";
@@ -39,6 +40,7 @@ export default [
   slider,
   sliderImage,
   groupButton,
+  articleCard,
   infoBox,
   iframe,
   textBlock,

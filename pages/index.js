@@ -3,6 +3,7 @@ import sanityClient from "../studio/sanityClient";
 import Layout from "../components/Layout";
 import MainSlider from "../components/MainSlider";
 import GroupButtons from "../components/GroupButtons";
+import ArticleCards from "../components/ArticleCards";
 import TextBlock from "../components/TextBlock";
 import InfoBox from "../components/InfoBox";
 import SliderStories from "../components/SliderStories";
@@ -44,6 +45,13 @@ const queryHomepage = `*[_id == "homepage"][0]{
       ...,
       target->{_id, slug, title},
     }
+  },
+  articleCards[]{
+    ...,
+    link {
+    	external,
+    	internal->{_id, slug, title},
+  	},
   }
 }`;
 
@@ -65,7 +73,7 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
     <section className="flex flex-col">
       <MainSlider mainSlider={homepage.mainSlider} />
       <TextBlock text={homepage.siteSummary} />
-      <GroupButtons groupButtons={homepage.clientGroupButtons} />
+      <GroupButtons groupButtons={homepage.clientGroupButtons} backupCol={"bg-green"} />
 
       {homepage.sections.map((item) => {
         return (() => {
@@ -80,6 +88,8 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
           }
         })();
       })}
+
+      {homepage.articleCards && <ArticleCards articleCards={homepage.articleCards} backupCol={"bg-green"} />}
     </section>
   </Layout>
 );

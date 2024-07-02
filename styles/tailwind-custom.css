@@ -16,13 +16,13 @@
   p {
     @apply mb-4;
   }
-  article p:not(.group-people *):not(.client-group-button *):not(.info-box *) {
+  article p:not(.group-people *):not(.client-group-button *):not(.article-card *):not(.info-box *) {
     @apply section-margin;
   }
   article section {
     @apply mb-8;
   }
-  article p:not(.group-people *):not(.client-group-button *):not(.info-box *),
+  article p:not(.group-people *):not(.client-group-button *):not(.article-card *):not(.info-box *),
   article ul {
     @apply font-light text-lg;
   }

@@ -12,6 +12,7 @@ import InfoBox from "../components/InfoBox";
 import Iframe from "../components/Iframe";
 import SingleButton from "../components/SingleButton";
 import GroupButtons from "../components/GroupButtons";
+import ArticleCards from "../components/ArticleCards";
 import People from "../components/People";
 import Docs from "../components/Docs";
 
@@ -34,6 +35,16 @@ const queryPage = `*[_type == "page" && slug.current == $slug] {
   body[]{
     ...,
     groupButtons[]{
+      ...,
+      link {
+        external,
+        internal->{
+          ...,
+          "fileURL": file.asset->url
+        },
+      },
+    },
+    articleCards[]{
       ...,
       link {
         external,
@@ -133,7 +144,7 @@ const Page = ({ mainNav, homepage, page, footer }) => {
       textCol: "text-lime",
       textHovCol: "hover:text-lime",
     };
-  } else {
+  } else if (page.clientGroupHighlightCol === "green") {
     colors = {
       bgCol: "bg-green",
       bgHovCol: "hover:bg-green",
@@ -141,6 +152,15 @@ const Page = ({ mainNav, homepage, page, footer }) => {
       borderHovCol: "hover:border-green",
       textCol: "text-green",
       textHovCol: "hover:text-green",
+    };
+  } else {
+    colors = {
+      bgCol: "bg-darkGrey",
+      bgHovCol: "hover:bg-darkGrey",
+      borderCol: "border-darkGrey",
+      borderHovCol: "hover:border-darkGrey",
+      textCol: "text-darkGrey",
+      textHovCol: "hover:text-darkGrey",
     };
   }
 
@@ -166,6 +186,9 @@ const Page = ({ mainNav, homepage, page, footer }) => {
       singleButton: (props) => <SingleButton buttonProps={props.node} colors={colors} />,
       multipleButtons: (props) => (
         <GroupButtons groupButtons={props.node.groupButtons} backupCol={colors.bgCol} />
+      ),
+      articleCards: (props) => (
+        <ArticleCards articleCards={props.node.articleCards} backupCol={colors.bgCol} />
       ),
       people: (props) => <People peopleProps={props.node.groupPeople} colors={colors} />,
       docs: (props) => <Docs docProps={props.node.groupDocs} colors={colors} />,

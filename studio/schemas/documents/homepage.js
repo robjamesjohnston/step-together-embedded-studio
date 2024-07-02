@@ -46,5 +46,11 @@ export default {
       title: "Sections",
       of: [{ type: "infoBox" }, { type: "textBlock" }, { type: "slider" }],
     },
+    {
+      name: "articleCards",
+      type: "array",
+      title: "Articles",
+      of: [{ type: "articleCard" }],
+    },
   ],
 };

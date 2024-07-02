@@ -10,6 +10,7 @@ export default {
       { title: "WIS and veterans", value: "orange" },
       { title: "Green", value: "green" },
       { title: "Lime", value: "lime" },
+      { title: "Dark grey", value: "darkGrey" },
     ],
   },
 };

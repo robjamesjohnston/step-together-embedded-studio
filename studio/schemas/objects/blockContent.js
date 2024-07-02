@@ -106,6 +106,25 @@ export default {
       ],
     },
     {
+      name: "articleCards",
+      type: "object",
+      title: "Article cards",
+      preview: {
+        select: {
+          title: "articleCards.0.title",
+          subtitle: "articleCards.0.text",
+        },
+      },
+      fields: [
+        {
+          name: "articleCards",
+          type: "array",
+          title: "Article cards",
+          of: [{ type: "articleCard" }],
+        },
+      ],
+    },
+    {
       name: "people",
       type: "object",
       title: "People",
