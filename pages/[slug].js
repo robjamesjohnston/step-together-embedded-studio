@@ -185,10 +185,10 @@ const Page = ({ mainNav, homepage, page, footer }) => {
       iframe: Iframe,
       singleButton: (props) => <SingleButton buttonProps={props.node} colors={colors} />,
       multipleButtons: (props) => (
-        <GroupButtons groupButtons={props.node.groupButtons} backupCol={colors.bgCol} />
+        <GroupButtons buttons={props.node.groupButtons} backupCol={colors.bgCol} />
       ),
       articleCards: (props) => (
-        <ArticleCards articleCards={props.node.articleCards} backupCol={colors.bgCol} />
+        <ArticleCards articles={props.node.articleCards} backupCol={colors.bgCol} />
       ),
       people: (props) => <People peopleProps={props.node.groupPeople} colors={colors} />,
       docs: (props) => <Docs docProps={props.node.groupDocs} colors={colors} />,

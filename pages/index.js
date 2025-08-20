@@ -6,7 +6,7 @@ import GroupButtons from "../components/GroupButtons";
 import ArticleCards from "../components/ArticleCards";
 import TextBlock from "../components/TextBlock";
 import InfoBox from "../components/InfoBox";
-import SliderStories from "../components/SliderStories";
+import Slider from "../components/Slider";
 
 const queryMainNav = `*[handle == "main-nav"][0]{
   sections[]{
@@ -23,18 +23,6 @@ const queryMainNav = `*[handle == "main-nav"][0]{
 
 const queryHomepage = `*[_id == "homepage"][0]{
   ...,
-  mainSlider[]{
-    ...,
-    target->{_id, slug, title},
-    title
-  },
-  clientGroupButtons[]{
-    ...,
-    link {
-    	external,
-    	internal->{_id, slug, title},
-  	},
-  },
   sections[]{
     ...,
     link {
@@ -44,15 +32,22 @@ const queryHomepage = `*[_id == "homepage"][0]{
     sliderImages[]{
       ...,
       target->{_id, slug, title},
-    }
+    },
+    groupButtons[]{
+      ...,
+      link {
+        external,
+        internal->{_id, slug, title},
+      },
+    },
+    articles[]{
+      ...,
+      link {
+        external,
+        internal->{_id, slug, title},
+      },
+    },
   },
-  articleCards[]{
-    ...,
-    link {
-    	external,
-    	internal->{_id, slug, title},
-  	},
-  }
 }`;
 
 const IndexPage = ({ mainNav, homepage, footer }) => (
@@ -72,25 +67,28 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
     }}
   >
     <section className="flex flex-col">
-      <MainSlider mainSlider={homepage.mainSlider} />
-      <TextBlock text={homepage.siteSummary} />
-      <GroupButtons groupButtons={homepage.clientGroupButtons} backupCol={"bg-green"} />
-
       {homepage.sections.map((item) => {
         return (() => {
+          if (item._type === "mainSlider") {
+            return <MainSlider key={item._key} slides={item.sliderImages} />;
+          }
+          if (item._type === "clientGroups") {
+            return <GroupButtons key={item._key} buttons={item.groupButtons} backupCol={"bg-green"} />;
+          }
           if (item._type === "infoBox") {
             return <InfoBox key={item._key} infoBoxProps={item} />;
           }
           if (item._type === "slider") {
-            return <SliderStories key={item._key} sliderStories={item.sliderImages} />;
+            return <Slider key={item._key} slides={item.sliderImages} />;
           }
           if (item._type === "textBlock") {
             return <TextBlock key={item._key} text={item.text} textCol={item.textCol} />;
           }
+          if (item._type === "homeArticleCards") {
+            return <ArticleCards key={item._key} articles={item.articles} backupCol={"bg-green"} />;
+          }
         })();
       })}
-
-      {homepage.articleCards && <ArticleCards articleCards={homepage.articleCards} backupCol={"bg-green"} />}
     </section>
   </Layout>
 );

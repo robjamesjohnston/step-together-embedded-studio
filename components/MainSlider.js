@@ -5,10 +5,10 @@ import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import Link from "next/link";
 
-const MainSlider = ({ mainSlider }) => {
+const MainSlider = ({ slides }) => {
   return (
     <Swiper
-    modules={[Keyboard, Mousewheel, Navigation, Pagination, Autoplay]}
+      modules={[Keyboard, Mousewheel, Navigation, Pagination, Autoplay]}
       className="main-slider w-full"
       loop={true}
       autoplay={{
@@ -22,7 +22,7 @@ const MainSlider = ({ mainSlider }) => {
       pagination={{ clickable: true }}
       // navigation
     >
-      {mainSlider.map((item) => {
+      {slides.map((item) => {
         const imageProps = useNextSanityImage(sanityClient, item.image);
 
         let bgCol;
@@ -46,11 +46,12 @@ const MainSlider = ({ mainSlider }) => {
                 <figure className="relative aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2">
                   <Image
                     src={imageProps.src}
-                    alt={item.altText}
+                    alt={item.altText || item.title}
                     loader={imageProps.loader}
                     fill={true}
+                    sizes="(max-width: 1023px) 100vw, 50vw"
                     style={{objectFit: "cover"}}
-                    loading="lazy"
+                    loading="eager"
                   />
                 </figure>
                 <div className={`${bgCol} aspect-w-6 aspect-h-3 lg:aspect-h-2 lg:w-1/2`}>

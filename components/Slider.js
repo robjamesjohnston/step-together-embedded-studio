@@ -5,7 +5,7 @@ import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import Link from "next/link";
 
-const SliderStories = ({ sliderStories }) => {
+const Slider = ({ slides }) => {
   return (
     <Swiper
       modules={[Keyboard, Mousewheel, Navigation, Pagination]}
@@ -26,7 +26,7 @@ const SliderStories = ({ sliderStories }) => {
       pagination={{ clickable: true }}
       // navigation
     >
-      {sliderStories.map((item) => {
+      {slides.map((item) => {
         const imageProps = useNextSanityImage(sanityClient, item.image);
 
         let textCol;
@@ -48,10 +48,11 @@ const SliderStories = ({ sliderStories }) => {
                 <figure className="relative aspect-h-1 aspect-w-1">
                   <Image
                     className="rounded-full"
-                    alt={item.altText}
+                    alt={item.altText || item.title}
                     src={imageProps.src}
                     loader={imageProps.loader}
                     fill={true}
+                    sizes="(max-width: 767px) 96vw, 32vw"
                     style={{objectFit: "cover"}}
                     loading="lazy"
                   />
@@ -68,4 +69,4 @@ const SliderStories = ({ sliderStories }) => {
   );
 };
 
-export default SliderStories;
+export default Slider;

@@ -89,7 +89,7 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
         </h2>
         <div className="md:w-1/2 text-white text-xl font-light">
           <BlockContent
-            blocks={text}
+            blocks={text || []}
             serializers={serializers}
             projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
             dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
