@@ -10,9 +10,12 @@ import footer from "./documents/footer";
 import navSection from "./objects/navSection";
 import navLink from "./objects/navLink";
 import blockContent from "./objects/blockContent";
+import mainSlider from "./objects/mainSlider";
 import slider from "./objects/slider";
 import sliderImage from "./objects/sliderImage";
+import clientGroups from "./objects/clientGroups";
 import groupButton from "./objects/groupButton";
+import homeArticleCards from "./objects/homeArticleCards";
 import articleCard from "./objects/articleCard";
 import infoBox from "./objects/infoBox";
 import iframe from "./objects/iframe";
@@ -37,9 +40,12 @@ export default [
   blockContent,
   navSection,
   navLink,
+  mainSlider,
   slider,
   sliderImage,
+  clientGroups,
   groupButton,
+  homeArticleCards,
   articleCard,
   infoBox,
   iframe,

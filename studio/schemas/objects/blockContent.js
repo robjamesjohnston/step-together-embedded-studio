@@ -119,7 +119,7 @@ export default {
         {
           name: "articleCards",
           type: "array",
-          title: "Article cards",
+          title: "Articles",
           of: [{ type: "articleCard" }],
         },
       ],
