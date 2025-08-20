@@ -19,14 +19,19 @@ export default {
       title: "Facebook",
     },
     {
+      name: "instagramLink",
+      type: "string",
+      title: "Instagram",
+    },
+    {
       name: "twitterLink",
       type: "string",
       title: "Twitter",
     },
     {
-      name: "linkedinLink",
+      name: "linkedInLink",
       type: "string",
-      title: "Linkedin",
+      title: "LinkedIn",
     },
     {
       name: "youTubeLink",

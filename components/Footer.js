@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { GrFacebookOption, GrTwitter, GrLinkedinOption, GrYoutube } from "react-icons/gr";
+import { GrFacebookOption, GrInstagram, GrTwitter, GrLinkedinOption, GrYoutube } from "react-icons/gr";
 import { RiExternalLinkLine } from "react-icons/ri";
 
 const Footer = ({ footer }) => {
   const { compInfo, socialLinks } = footer;
-  const { fbLink, twLink, liLink, ytLink } = socialLinks;
+  const { fbLink, inLink, twLink, liLink, ytLink } = socialLinks;
   return (
     <footer className="max-w-screen-xl mx-auto">
       <div className="bg-darkGrey">
@@ -13,6 +13,13 @@ const Footer = ({ footer }) => {
             <li className="mx-2">
               <a href={fbLink} target="_blank" rel="noopener">
                 <GrFacebookOption />
+              </a>
+            </li>
+          )}
+          {inLink && (
+            <li className="mx-2">
+              <a href={inLink} target="_blank" rel="noopener">
+                <GrInstagram />
               </a>
             </li>
           )}

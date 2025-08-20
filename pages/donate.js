@@ -59,8 +59,9 @@ const Donate = ({ mainNav, homepage, footer }) => {
         compInfo: footer.companyInfo,
         socialLinks: {
           fbLink: footer.facebookLink,
+          inLink: footer.instagramLink,
           twLink: footer.twitterLink,
-          liLink: footer.linkedinLink,
+          liLink: footer.linkedInLink,
           ytLink: footer.youTubeLink,
         },
       }}
