@@ -33,6 +33,7 @@ export default {
         { type: "infoBox" },
         { type: "textBlock" },
         { type: "slider" },
+        { type: "articleImage" },
         { type: "homeArticleCards" },
       ],
     },

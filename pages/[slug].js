@@ -179,10 +179,10 @@ const Page = ({ mainNav, homepage, page, footer }) => {
             overrides[props.node.style]({ children: props.children })
           : // otherwise, fallback to the provided default with all props
             BlockContent.defaultSerializers.types.block(props),
-      articleImage: ArticleImage,
+      articleImage: (props) => <ArticleImage imageProps={props.node} isHomepage={false}/>,
       quoteBox: (props) => <QuoteBox quoteBoxProps={props.node} colors={colors} />,
       infoBox: (props) => <InfoBox infoBoxProps={props.node} backupCol={colors} />,
-      iframe: Iframe,
+      iframe: (props) => <Iframe props={props.node} />,
       singleButton: (props) => <SingleButton buttonProps={props.node} colors={colors} />,
       multipleButtons: (props) => (
         <GroupButtons buttons={props.node.groupButtons} backupCol={colors.bgCol} />

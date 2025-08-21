@@ -3,10 +3,11 @@ import sanityClient from "../studio/sanityClient";
 import Layout from "../components/Layout";
 import MainSlider from "../components/MainSlider";
 import GroupButtons from "../components/GroupButtons";
-import ArticleCards from "../components/ArticleCards";
-import TextBlock from "../components/TextBlock";
 import InfoBox from "../components/InfoBox";
+import TextBlock from "../components/TextBlock";
 import Slider from "../components/Slider";
+import ArticleImage from "../components/ArticleImage";
+import ArticleCards from "../components/ArticleCards";
 
 const queryMainNav = `*[handle == "main-nav"][0]{
   sections[]{
@@ -78,11 +79,14 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
           if (item._type === "infoBox") {
             return <InfoBox key={item._key} infoBoxProps={item} />;
           }
+          if (item._type === "textBlock") {
+            return <TextBlock key={item._key} text={item.text} textCol={item.textCol} />;
+          }
           if (item._type === "slider") {
             return <Slider key={item._key} slides={item.sliderImages} />;
           }
-          if (item._type === "textBlock") {
-            return <TextBlock key={item._key} text={item.text} textCol={item.textCol} />;
+          if (item._type === "articleImage") {
+            return <ArticleImage key={item._key} imageProps={item} isHomepage={true} />;
           }
           if (item._type === "homeArticleCards") {
             return <ArticleCards key={item._key} articles={item.articles} backupCol={"bg-green"} />;

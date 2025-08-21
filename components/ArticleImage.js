@@ -2,14 +2,14 @@ import sanityClient from "../studio/sanityClient";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 
-const ArticleImage = (props) => {
-  const { image, alignment, altText } = props.node;
+const ArticleImage = ({ imageProps, isHomepage }) => {
+  const { image, alignment, altText } = imageProps;
   const blockImageProps = useNextSanityImage(sanityClient, image);
   return (
     <figure
       // 8, 4, 3 – 16:9
       // 6, 4, 3 – 6:4
-      className={`relative aspect-w-6 my-8 ${
+      className={`relative aspect-w-6 ${!isHomepage ? "my-8" : ""} ${
         alignment === "right"
           ? "aspect-h-4 md:aspect-h-2 md:w-1/2 md:self-end"
           : alignment === "full"
@@ -24,7 +24,7 @@ const ArticleImage = (props) => {
         alt={altText}
         loader={blockImageProps.loader}
         fill={true}
-        style={{objectFit: "cover"}}
+        style={{ objectFit: "cover" }}
         loading="lazy"
       />
     </figure>
