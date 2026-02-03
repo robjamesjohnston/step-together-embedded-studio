@@ -24,6 +24,12 @@ export default {
       title: "Site title",
     },
     {
+      name: "siteDescription",
+      type: "text",
+      title: "Site description",
+      rows: 3,
+    },
+    {
       name: "sections",
       type: "array",
       title: "Sections",

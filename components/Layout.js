@@ -7,9 +7,9 @@ import Footer from "./Footer";
 
 const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID;
 
-const Layout = ({ mainNav, headerLogo, page, children, footer }) => (
+const Layout = ({ mainNav, headerLogo, pageMeta, siteMeta, children, footer }) => (
   <>
-    <HeadComp page={page} />
+    <HeadComp pageMeta={pageMeta} siteMeta={siteMeta} />
     <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`} strategy="afterInteractive" />
     <Script strategy="afterInteractive">
       {`

@@ -54,7 +54,14 @@ const Donate = ({ mainNav, homepage, footer }) => {
     <Layout
       mainNav={mainNav}
       headerLogo={homepage.headerLogo}
-      page={{ title: "Donate" }}
+      pageMeta={{
+        title: "Donate",
+        description: "Make a donation to Step Together",
+      }}
+      siteMeta={{
+        title: homepage.siteTitle,
+        description: homepage.siteDescription,
+      }}
       footer={{
         compInfo: footer.companyInfo,
         socialLinks: {

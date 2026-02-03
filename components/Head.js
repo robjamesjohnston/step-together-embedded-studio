@@ -1,8 +1,13 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
 
-const HeadComp = ({ page }) => {
+const HeadComp = ({ pageMeta, siteMeta }) => {
   const router = useRouter();
+  const pageTitle = pageMeta?.title || siteMeta?.title || "";
+  const siteTitle = siteMeta?.title || "";
+  const title = `${pageTitle}${router.pathname === "/" ? "" : ` | ${siteTitle}`}`;
+  const description = pageMeta?.metaDescription || siteMeta?.description || "";
+
   return (
     <Head>
       <link rel="icon" href="/favicon.ico" />
@@ -10,7 +15,8 @@ const HeadComp = ({ page }) => {
       <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="theme-color" content="#ffffff" />
-      <title>{`${page.title}${router.pathname === "/" ? "" : " — Step Together"}`}</title>
+      <title>{title}</title>
+      <meta name="description" content={description} />
     </Head>
   );
 };

@@ -31,6 +31,8 @@ const queryMainNav = `*[handle == "main-nav"][0]{
 
 const queryPage = `*[_type == "page" && slug.current == $slug] {
   title,
+  metaTitle,
+  metaDescription,
   clientGroupHighlightCol,
   body[]{
     ...,
@@ -242,7 +244,14 @@ const Page = ({ mainNav, homepage, page, footer }) => {
     <Layout
       mainNav={mainNav}
       headerLogo={homepage.headerLogo}
-      page={page}
+      pageMeta={{
+        title: page.metaTitle || page.title,
+        description: page.metaDescription,
+      }}
+      siteMeta={{
+        title: homepage.siteTitle,
+        description: homepage.siteDescription,
+      }}
       footer={{
         compInfo: footer.companyInfo,
         socialLinks: {

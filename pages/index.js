@@ -55,7 +55,10 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
   <Layout
     mainNav={mainNav}
     headerLogo={homepage.headerLogo}
-    page={{ title: homepage.siteTitle }}
+    siteMeta={{
+      title: homepage.siteTitle,
+      description: homepage.siteDescription,
+    }}
     footer={{
       compInfo: footer.companyInfo,
       socialLinks: {
