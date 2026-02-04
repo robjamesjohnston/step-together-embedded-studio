@@ -150,7 +150,7 @@ const Donate = ({ mainNav, homepage, footer }) => {
 
 export const getStaticProps = async () => {
   const mainNav = await sanityClient.fetch(queryMainNav);
-  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo}`);
+  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo, siteTitle, siteDescription}`);
   const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
   return {
     props: { mainNav, homepage, footer },

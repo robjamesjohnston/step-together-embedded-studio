@@ -14,13 +14,13 @@ export default {
       name: "metaTitle",
       title: "Meta Title",
       type: "string",
-      description: "SEO title for search engines (Recommended 50-60 characters. Optional - defaults to page title if not provided)",
+      description: "SEO title for search engines. Recommended 50-60 characters. Optional - defaults to page title if not provided",
     },
     {
       name: "metaDescription",
       title: "Meta Description",
       type: "text",
-      description: "SEO description for search engines (Recommended 150-160 characters)",
+      description: "SEO description for search engines. Recommended 150-160 characters",
       rows: 3,
     },
     {

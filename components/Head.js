@@ -6,7 +6,7 @@ const HeadComp = ({ pageMeta, siteMeta }) => {
   const pageTitle = pageMeta?.title || siteMeta?.title || "";
   const siteTitle = siteMeta?.title || "";
   const title = `${pageTitle}${router.pathname === "/" ? "" : ` | ${siteTitle}`}`;
-  const description = pageMeta?.metaDescription || siteMeta?.description || "";
+  const description = pageMeta?.description || siteMeta?.description || "";
 
   return (
     <Head>

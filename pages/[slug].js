@@ -281,7 +281,7 @@ const Page = ({ mainNav, homepage, page, footer }) => {
 
 export const getStaticProps = async (context) => {
   const mainNav = await sanityClient.fetch(queryMainNav);
-  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo}`);
+  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo, siteTitle, siteDescription}`);
   const page = await sanityClient.fetch(queryPage, { slug: context.params.slug });
   const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
   return {
