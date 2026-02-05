@@ -7,6 +7,7 @@ const HeadComp = ({ pageMeta, siteMeta }) => {
   const siteTitle = siteMeta?.title || "";
   const title = `${pageTitle}${router.asPath === "/" ? "" : ` | ${siteTitle}`}`;
   const description = pageMeta?.description || siteMeta?.description || "";
+  const baseUrl = typeof window !== 'undefined' ? window.location.origin : 'https://step-together.org.uk';
 
   return (
     <Head>
@@ -20,9 +21,9 @@ const HeadComp = ({ pageMeta, siteMeta }) => {
       {/* Open Graph */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={`https://step-together.org.uk${router.asPath}`} />
+      <meta property="og:url" content={`${baseUrl}${router.asPath}`} />
       <meta property="og:site_name" content={siteTitle} />
-      <meta property="og:image" content="https://step-together.org.uk/StepTogetherSocial.png" />
+      <meta property="og:image" content={`${baseUrl}/StepTogetherSocial.png`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
