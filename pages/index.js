@@ -5,6 +5,7 @@ import MainSlider from "../components/MainSlider";
 import GroupButtons from "../components/GroupButtons";
 import InfoBox from "../components/InfoBox";
 import TextBlock from "../components/TextBlock";
+import RichTextBlock from "../components/RichTextBlock";
 import Slider from "../components/Slider";
 import ArticleImage from "../components/ArticleImage";
 import ArticleCards from "../components/ArticleCards";
@@ -84,6 +85,9 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
           }
           if (item._type === "textBlock") {
             return <TextBlock key={item._key} text={item.text} textCol={item.textCol} />;
+          }
+          if (item._type === "richTextBlock") {
+            return <RichTextBlock key={item._key} text={item.text} />;
           }
           if (item._type === "slider") {
             return <Slider key={item._key} slides={item.sliderImages} />;

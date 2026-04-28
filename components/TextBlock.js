@@ -1,4 +1,4 @@
-const StandoutCopy = ({ text, textCol }) => {
+const TextBlock = ({ text, textCol }) => {
   let textColor;
   switch (textCol) {
     case "text-green":
@@ -18,4 +18,4 @@ const StandoutCopy = ({ text, textCol }) => {
   );
 };
 
-export default StandoutCopy;
+export default TextBlock;

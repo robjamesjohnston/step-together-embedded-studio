@@ -38,6 +38,7 @@ export default {
         { type: "clientGroups" },
         { type: "infoBox" },
         { type: "textBlock" },
+        { type: "richTextBlock" },
         { type: "slider" },
         { type: "articleImage" },
         { type: "homeArticleCards" },

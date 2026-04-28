@@ -1,9 +1,9 @@
 import { IoDocumentOutline } from "react-icons/io5";
 
 export default {
-  title: "Block Content",
   name: "blockContent",
   type: "array",
+  title: "Block Content",
   of: [
     {
       title: "Block",

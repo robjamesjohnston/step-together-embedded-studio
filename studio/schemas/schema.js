@@ -20,6 +20,7 @@ import articleCard from "./objects/articleCard";
 import infoBox from "./objects/infoBox";
 import iframe from "./objects/iframe";
 import textBlock from "./objects/textBlock";
+import richTextBlock from "./objects/richTextBlock";
 import articleImage from "./objects/articleImage";
 import quoteBox from "./objects/quoteBox";
 import singleButton from "./objects/singleButton";
@@ -50,6 +51,7 @@ export default [
   infoBox,
   iframe,
   textBlock,
+  richTextBlock,
   articleImage,
   quoteBox,
   singleButton,

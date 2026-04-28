@@ -1,6 +1,6 @@
 import BlockContent from "@sanity/block-content-to-react";
-import { RiExternalLinkLine } from "react-icons/ri";
 import Link from "next/link";
+import { RiExternalLinkLine } from "react-icons/ri";
 
 const ConditionalWrapper = ({ condition, wrapper, children }) => {
   return condition ? wrapper(children) : children;

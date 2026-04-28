@@ -16,22 +16,28 @@
   p {
     @apply mb-4;
   }
-  article p:not(.group-people *):not(.client-group-button *):not(.article-card *):not(.info-box *) {
+  article p:not(.group-people *):not(.client-group-button *):not(.article-card *):not(.info-box *),
+  .rich-text p:not(.client-group-button *),
+  .ruch-text ul {
     @apply section-margin;
   }
   article section {
     @apply mb-8;
   }
   article p:not(.group-people *):not(.client-group-button *):not(.article-card *):not(.info-box *),
-  article ul {
+  article ul,
+  .rich-text p:not(.client-group-button *) {
     @apply font-light text-lg;
   }
   article p a,
-  article h2 a {
+  article h2 a,
+  .rich-text p a,
+  .rich-text h2 a {
     @apply border-b-2 bg-white text-green;
   }
-  article ul {
-    @apply list-disc pl-8 font-light;
+  article ul, 
+  .rich-text ul {
+    @apply list-disc pl-12 font-light;
   }
   blockquote {
     text-indent: -0.5em;
