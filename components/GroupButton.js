@@ -1,9 +1,6 @@
 import Link from "next/link";
 import { MdArrowForward } from "react-icons/md";
-
-const ConditionalWrapper = ({ condition, wrapper, children }) => {
-  return condition ? wrapper(children) : children;
-};
+import ConditionalWrapper from "../utils/ConditionalWrapper";
 
 const GroupButton = ({ title, text, bgCol, link }) => (
   <ConditionalWrapper
@@ -13,7 +10,7 @@ const GroupButton = ({ title, text, bgCol, link }) => (
         <a
           href={link.external}
           target={link.external === "https://step-together.org.uk/donate" ? "_self" : "_blank"}
-          rel="noopener"
+          rel="noopener noreferrer"
         >
           {children}
         </a>

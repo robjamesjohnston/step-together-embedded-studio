@@ -54,7 +54,7 @@ const Person = ({ name, job, area, bio, image, colors }) => {
       ) : (
         <MdExpandMore onClick={openBio} className={`${colors.textHovCol} text-3xl transition-all duration-300`} />
       )}
-      <div onClick={handleClick} className={`${open || "hidden"}`}>
+      <div onClick={handleClick} className={open ? "" : "hidden"}>
         <p className="font-light">{bio}</p>
       </div>
     </section>

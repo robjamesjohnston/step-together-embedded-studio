@@ -4,6 +4,11 @@ export default {
   title: "HTML iframe",
   fields: [
     {
+      name: "title",
+      type: "string",
+      title: "Title",
+    },
+    {
       name: "url",
       type: "string",
       title: "URL",

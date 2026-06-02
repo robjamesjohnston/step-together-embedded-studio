@@ -2,10 +2,7 @@ import sanityClient from "../studio/sanityClient";
 import { useNextSanityImage } from "next-sanity-image";
 import Image from "next/image";
 import Link from "next/link";
-
-const ConditionalWrapper = ({ condition, wrapper, children }) => {
-  return condition ? wrapper(children) : children;
-};
+import ConditionalWrapper from "../utils/ConditionalWrapper";
 
 const ArticleCard = ({ image, title, text, bgCol, link }) => {
   const cardImageProps = useNextSanityImage(sanityClient, image);
@@ -18,7 +15,7 @@ const ArticleCard = ({ image, title, text, bgCol, link }) => {
           <a
             href={link.external}
             target={link.external === "https://step-together.org.uk/donate" ? "_self" : "_blank"}
-            rel="noopener"
+            rel="noopener noreferrer"
           >
             {children}
           </a>

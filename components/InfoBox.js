@@ -1,10 +1,7 @@
 import BlockContent from "@sanity/block-content-to-react";
 import Link from "next/link";
 import { RiExternalLinkLine } from "react-icons/ri";
-
-const ConditionalWrapper = ({ condition, wrapper, children }) => {
-  return condition ? wrapper(children) : children;
-};
+import ConditionalWrapper from "../utils/ConditionalWrapper";
 
 const InfoBox = ({ infoBoxProps, backupCol }) => {
   const { title, text, buttonText, link, bgCol } = infoBoxProps;
@@ -63,7 +60,7 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
           condition={props.mark.href}
           wrapper={(children) => {
             return props.mark.blank ? (
-              <a href={props.mark.href} target="_blank" rel="noopener">
+              <a href={props.mark.href} target="_blank" rel="noopener noreferrer">
                 {children}
                 <RiExternalLinkLine className="inline ml-1 border-0" />
               </a>
@@ -98,7 +95,7 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
             condition={link}
             wrapper={(children) => {
               return link.external ? (
-                <a href={link.external} target="_blank" rel="noopener">
+                <a href={link.external} target="_blank" rel="noopener noreferrer">
                   {children}
                 </a>
               ) : (

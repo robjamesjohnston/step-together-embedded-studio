@@ -35,6 +35,9 @@ const MainSlider = ({ slides }) => {
             break;
           case "orange":
             bgCol = "bg-orange";
+            break;
+          default:
+            bgCol = "bg-green";
         }
 
         return (

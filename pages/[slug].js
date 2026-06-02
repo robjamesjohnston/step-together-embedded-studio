@@ -15,6 +15,7 @@ import GroupButtons from "../components/GroupButtons";
 import ArticleCards from "../components/ArticleCards";
 import People from "../components/People";
 import Docs from "../components/Docs";
+import ConditionalWrapper from "../utils/ConditionalWrapper";
 
 const queryMainNav = `*[handle == "main-nav"][0]{
   sections[]{
@@ -95,10 +96,6 @@ const queryAll = `*[_type == "page" && slug.current != ''] {
   'slug': slug.current
 }
 `;
-
-const ConditionalWrapper = ({ condition, wrapper, children }) => {
-  return condition ? wrapper(children) : children;
-};
 
 const Page = ({ mainNav, homepage, page, footer }) => {
   const router = useRouter();
@@ -222,7 +219,7 @@ const Page = ({ mainNav, homepage, page, footer }) => {
           condition={props.mark.href}
           wrapper={(children) => {
             return props.mark.blank ? (
-              <a href={props.mark.href} target="_blank" rel="noopener">
+              <a href={props.mark.href} target="_blank" rel="noopener noreferrer">
                 {children}
                 <RiExternalLinkLine className="inline ml-1 border-0" />
               </a>
@@ -280,14 +277,27 @@ const Page = ({ mainNav, homepage, page, footer }) => {
 };
 
 export const getStaticProps = async (context) => {
-  const mainNav = await sanityClient.fetch(queryMainNav);
-  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo, siteTitle, siteDescription}`);
-  const page = await sanityClient.fetch(queryPage, { slug: context.params.slug });
-  const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
-  return {
-    props: { mainNav, homepage, page, footer },
-    revalidate: 1,
-  };
+  try {
+    const mainNav = await sanityClient.fetch(queryMainNav);
+    const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo, siteTitle, siteDescription}`);
+    const page = await sanityClient.fetch(queryPage, { slug: context.params.slug });
+    const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
+
+    if (!page || !homepage || !footer) {
+      return { notFound: true };
+    }
+
+    return {
+      props: { mainNav, homepage, page, footer },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error("getStaticProps error:", error);
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
 };
 
 export const getStaticPaths = async () => {

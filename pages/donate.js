@@ -180,14 +180,27 @@ const Donate = ({ mainNav, homepage, donate, footer }) => {
 };
 
 export const getStaticProps = async () => {
-  const mainNav = await sanityClient.fetch(queryMainNav);
-  const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo, siteTitle, siteDescription}`);
-  const donate = await sanityClient.fetch(`*[_id == "donate"][0]{...}`);
-  const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
-  return {
-    props: { mainNav, homepage, donate, footer },
-    revalidate: 1,
-  };
+  try {
+    const mainNav = await sanityClient.fetch(queryMainNav);
+    const homepage = await sanityClient.fetch(`*[_id == "homepage"][0]{headerLogo, siteTitle, siteDescription}`);
+    const donate = await sanityClient.fetch(`*[_id == "donate"][0]{...}`);
+    const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
+
+    if (!homepage || !donate || !footer) {
+      return { notFound: true };
+    }
+
+    return {
+      props: { mainNav, homepage, donate, footer },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error("getStaticProps error:", error);
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
 };
 
 export default Donate;

@@ -39,6 +39,9 @@ const Slider = ({ slides }) => {
             break;
           case "orange":
             textCol = "text-orange";
+            break;
+          default:
+            textCol = "text-green";
         }
 
         return (

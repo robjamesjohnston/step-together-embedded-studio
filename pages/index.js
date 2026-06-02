@@ -105,13 +105,26 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
 );
 
 export const getStaticProps = async () => {
-  const mainNav = await sanityClient.fetch(queryMainNav);
-  const homepage = await sanityClient.fetch(queryHomepage);
-  const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
-  return {
-    props: { mainNav, homepage, footer },
-    revalidate: 1,
-  };
+  try {
+    const mainNav = await sanityClient.fetch(queryMainNav);
+    const homepage = await sanityClient.fetch(queryHomepage);
+    const footer = await sanityClient.fetch(`*[_id == "footer"][0]{...}`);
+
+    if (!homepage || !footer) {
+      return { notFound: true };
+    }
+
+    return {
+      props: { mainNav, homepage, footer },
+      revalidate: 3600,
+    };
+  } catch (error) {
+    console.error("getStaticProps error:", error);
+    return {
+      notFound: true,
+      revalidate: 60,
+    };
+  }
 };
 
 export default IndexPage;

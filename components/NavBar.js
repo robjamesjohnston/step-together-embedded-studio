@@ -17,7 +17,6 @@ const NavBar = ({ mainNav, headerLogo }) => {
 
   const closeMenu = () => {
     setOpen(false);
-    // setOpen2(false);
   };
 
   const useMediaQuery = (width) => {
@@ -33,20 +32,20 @@ const NavBar = ({ mainNav, headerLogo }) => {
 
     useEffect(() => {
       const media = window.matchMedia(`(min-width: ${width}px)`);
-      media.addEventListener("change", (e) => updateTarget(e));
+      media.addEventListener("change", updateTarget);
 
       // Check on mount (callback is not called until a change occurs)
       if (media.matches) {
         setTargetReached(true);
       }
 
-      return () => media.removeEventListener("change", (e) => updateTarget(e));
-    }, []);
+      return () => media.removeEventListener("change", updateTarget);
+    }, [updateTarget, width]);
 
     return targetReached;
   };
 
-  const isBreakpoint = useMediaQuery(768); //Media query width
+  const isBreakpoint = useMediaQuery(768); // Media query width
 
   const usePageOffset = (pageOffset) => {
     useEffect(() => {
@@ -62,7 +61,7 @@ const NavBar = ({ mainNav, headerLogo }) => {
     }, [offset]);
   };
 
-  usePageOffset(0); //Page offset
+  usePageOffset(0); // Page offset
 
   return (
     <nav

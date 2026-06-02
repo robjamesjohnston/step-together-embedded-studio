@@ -4,6 +4,7 @@ import { RiExternalLinkLine } from "react-icons/ri";
 
 import SingleButton from "./SingleButton";
 import GroupButtons from "./GroupButtons";
+import ConditionalWrapper from "../utils/ConditionalWrapper";
 
 const RichTextBlock = ({ text }) => {
   const colors = {
@@ -62,7 +63,7 @@ const RichTextBlock = ({ text }) => {
           condition={props.mark.href}
           wrapper={(children) => {
             return props.mark.blank ? (
-              <a href={props.mark.href} target="_blank" rel="noopener">
+              <a href={props.mark.href} target="_blank" rel="noopener noreferrer">
                 {children}
                 <RiExternalLinkLine className="inline ml-1 border-0" />
               </a>

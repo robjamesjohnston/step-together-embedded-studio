@@ -1,8 +1,5 @@
 import Link from "next/link";
-
-const ConditionalWrapper = ({ condition, wrapper, children }) => {
-  return condition ? wrapper(children) : children;
-};
+import ConditionalWrapper from "../utils/ConditionalWrapper";
 
 const SingleButton = ({ buttonProps, colors }) => {
   const { singleButtonText, link } = buttonProps;
@@ -11,7 +8,7 @@ const SingleButton = ({ buttonProps, colors }) => {
       condition={link}
       wrapper={(children) => {
         return link.external ? (
-          <a href={link.external} target="_blank" rel="noopener">
+          <a href={link.external} target="_blank" rel="noopener noreferrer">
             {children}
           </a>
         ) : (

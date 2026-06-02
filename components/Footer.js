@@ -11,35 +11,35 @@ const Footer = ({ footer }) => {
         <ul className="p-8 flex justify-center text-3xl text-lime">
           {fbLink && (
             <li className="mx-2">
-              <a href={fbLink} target="_blank" rel="noopener">
+              <a href={fbLink} target="_blank" rel="noopener noreferrer">
                 <GrFacebookOption />
               </a>
             </li>
           )}
           {inLink && (
             <li className="mx-2">
-              <a href={inLink} target="_blank" rel="noopener">
+              <a href={inLink} target="_blank" rel="noopener noreferrer">
                 <GrInstagram />
               </a>
             </li>
           )}
           {twLink && (
             <li className="mx-2">
-              <a href={twLink} target="_blank" rel="noopener">
+              <a href={twLink} target="_blank" rel="noopener noreferrer">
                 <GrTwitter />
               </a>
             </li>
           )}
           {liLink && (
             <li className="mx-2">
-              <a href={liLink} target="_blank" rel="noopener">
+              <a href={liLink} target="_blank" rel="noopener noreferrer">
                 <GrLinkedinOption />
               </a>
             </li>
           )}
           {ytLink && (
             <li className="mx-2">
-              <a href={ytLink} target="_blank" rel="noopener">
+              <a href={ytLink} target="_blank" rel="noopener noreferrer">
                 <GrYoutube />
               </a>
             </li>
@@ -57,7 +57,7 @@ const Footer = ({ footer }) => {
           &copy; {new Date().getFullYear()} Step Together Volunteering
           <span className="mx-2">|</span>
           Built by&nbsp;
-          <a href="https://rhworks.co" className="border-b" target="_blank" rel="noopener">
+          <a href="https://rhworks.co" className="border-b" target="_blank" rel="noopener noreferrer">
             R H Works
             <RiExternalLinkLine className="inline ml-1 border-0 mb-1" />
           </a>
