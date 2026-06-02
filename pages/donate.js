@@ -25,30 +25,48 @@ const Donate = ({ mainNav, homepage, donate, footer }) => {
   const handleFrequency = (event) => setFrequency(event.target.value);
 
   const [buttonLoading, setbuttonLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setError(null);
     setbuttonLoading(true);
 
-    const amount = event.target.amount.value;
-    const donationAmount = amount * 100;
+    try {
+      const amount = event.target.amount.value;
+      const donationAmount = Math.round(amount * 100);
 
-    const res = await fetch("/api/goCardless", {
-      body: JSON.stringify({
-        donationAmount: donationAmount,
-        frequency: frequency,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-      method: "POST",
-    });
+      const res = await fetch("/api/goCardless", {
+        body: JSON.stringify({
+          donationAmount: donationAmount,
+          frequency: frequency,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+      });
 
-    const result = await res.json();
+      const result = await res.json();
 
-    window.location = result.authorisation_url;
+      if (!res.ok) {
+        setError(result.error || "Payment service error. Please try again.");
+        setbuttonLoading(false);
+        return;
+      }
 
-    setbuttonLoading(false);
+      if (!result.authorisation_url) {
+        setError("Invalid payment response. Please try again.");
+        setbuttonLoading(false);
+        return;
+      }
+
+      window.location = result.authorisation_url;
+    } catch (err) {
+      console.error("Donation error:", err);
+      setError("Network error. Please check your connection and try again.");
+      setbuttonLoading(false);
+    }
   };
 
   return (
@@ -87,65 +105,73 @@ const Donate = ({ mainNav, homepage, donate, footer }) => {
           ) : query.status == "monthly_donation_success" ? (
             <h2 className="text-3xl font-light">Thank you for monthly donation</h2>
           ) : (
-            <form
-              onSubmit={handleSubmit}
-              className="donate-form flex flex-col max-w-screen-sm mx-auto"
-            >
-              <label htmlFor="amount">Amount</label>
-              <div className="flex border-green border-2 h-16 mb-8">
-                <div className="flex justify-center items-center w-1/12">
-                  <span className="text-green text-4xl">£</span>
-                </div>
-                <input
-                  id="amount"
-                  name="amount"
-                  type="number"
-                  pattern="^\d+(?:\.\d{1,2})?$"
-                  step="0.01"
-                  min="1"
-                  max="5000"
-                  autoComplete="amount"
-                  required
-                  className="text-2xl font-medium tracking-widest text-darkGrey py-4 pr-4 w-11/12"
-                />
-              </div>
-              <div className="md:flex">
-                <div className="flex md:w-1/2 mb-12">
-                  <div className="w-1/2">
-                    <label htmlFor="one-off">One off donation</label>
-                    <input
-                      id="one-off"
-                      value="one-off"
-                      name="frequency"
-                      type="radio"
-                      required
-                      className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
-                      checked={frequency === "one-off"}
-                      onChange={handleFrequency}
-                    />
+            <>
+              <form onSubmit={handleSubmit} className="donate-form flex flex-col max-w-screen-sm mx-auto">
+                <label htmlFor="amount">Amount</label>
+                <div className="flex border-green border-2 h-16 mb-8">
+                  <div className="flex justify-center items-center w-1/12">
+                    <span className="text-green text-4xl">£</span>
                   </div>
-                  <div className="w-1/2">
-                    <label htmlFor="monthly">Monthly donation</label>
-                    <input
-                      id="monthly"
-                      value="monthly"
-                      name="frequency"
-                      type="radio"
-                      required
-                      className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
-                      checked={frequency === "monthly"}
-                      onChange={handleFrequency}
-                    />
-                  </div>
+                  <input
+                    id="amount"
+                    name="amount"
+                    type="number"
+                    pattern="^\d+(?:\.\d{1,2})?$"
+                    step="0.01"
+                    min="1"
+                    max="5000"
+                    autoComplete="amount"
+                    required
+                    className="text-2xl font-medium tracking-widest text-darkGrey py-4 pr-4 w-11/12"
+                    disabled={buttonLoading}
+                  />
                 </div>
-                <button
-                  type="submit"
-                  className="transition duration-300 border-2 bg-green border-green hover:bg-white uppercase text-xl font-medium tracking-widest text-white hover:text-green p-4 mb-12  h-16 w-full md:w-1/2 md:self-end"
-                >
-                  {buttonLoading ? "Loading" : "Continue"}
-                </button>
-              </div>
-            </form>
+                <div className="md:flex">
+                  <div className="flex md:w-1/2 mb-12">
+                    <div className="w-1/2">
+                      <label htmlFor="one-off">One off donation</label>
+                      <input
+                        id="one-off"
+                        value="one-off"
+                        name="frequency"
+                        type="radio"
+                        required
+                        className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
+                        checked={frequency === "one-off"}
+                        onChange={handleFrequency}
+                        disabled={buttonLoading}
+                      />
+                    </div>
+                    <div className="w-1/2">
+                      <label htmlFor="monthly">Monthly donation</label>
+                      <input
+                        id="monthly"
+                        value="monthly"
+                        name="frequency"
+                        type="radio"
+                        required
+                        className="block appearance-none border-green border-2 h-16 w-16 mt-2 checked:bg-green"
+                        checked={frequency === "monthly"}
+                        onChange={handleFrequency}
+                        disabled={buttonLoading}
+                      />
+                    </div>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={buttonLoading}
+                    className="transition duration-300 border-2 bg-green border-green hover:bg-white uppercase text-xl font-medium tracking-widest text-white hover:text-green p-4 mb-12  h-16 w-full md:w-1/2 md:self-end disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {buttonLoading ? "Processing" : "Continue"}
+                  </button>
+                </div>
+              </form>
+              {error && (
+                <div className="h-16 max-w-screen-sm mx-auto flex items-center justify-center bg-red text-white">
+                  {error}
+                </div>
+              )}
+            </>
           )}
         </div>
       </article>
