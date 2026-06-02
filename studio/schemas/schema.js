@@ -1,6 +1,7 @@
 // Document types
 import nav from "./documents/nav";
 import homepage from "./documents/homepage";
+import donate from "./documents/donate";
 import page from "./documents/page";
 import person from "./documents/person";
 import doc from "./documents/doc";
@@ -32,6 +33,7 @@ export default [
   // in the studio.
   nav,
   homepage,
+  donate,
   page,
   person,
   doc,
