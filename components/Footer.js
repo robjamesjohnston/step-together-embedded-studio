@@ -1,10 +1,68 @@
+import BlockContent from "@sanity/block-content-to-react";
 import Link from "next/link";
+import ConditionalWrapper from "../utils/ConditionalWrapper";
 import { GrFacebookOption, GrInstagram, GrTwitter, GrLinkedinOption, GrYoutube } from "react-icons/gr";
 import { RiExternalLinkLine } from "react-icons/ri";
 
 const Footer = ({ footer }) => {
-  const { compInfo, socialLinks } = footer;
+  const { compInfo, richCompInfo, socialLinks } = footer;
   const { fbLink, inLink, twLink, liLink, ytLink } = socialLinks;
+
+  const serializers = {
+    types: {
+      block: (props) => BlockContent.defaultSerializers.types.block(props),
+    },
+    marks: {
+      internalLink: (props) => (
+        <ConditionalWrapper
+          condition={props.mark.reference}
+          wrapper={(children) => {
+            return (
+              <Link
+                legacyBehavior
+                href={
+                  props.mark.reference.slug
+                    ? props.mark.reference.slug.current
+                    : `${props.mark.reference.fileURL}?dl=`
+                }
+              >
+                <a>{children}</a>
+              </Link>
+            );
+          }}
+        >
+          {props.children}
+        </ConditionalWrapper>
+      ),
+      link: (props) => {
+        const isMailto = props.mark.href?.startsWith("mailto:");
+        return (
+          <ConditionalWrapper
+            condition={props.mark.href}
+            wrapper={(children) => {
+              if (isMailto) {
+                return <a href={props.mark.href}>{children}</a>;
+              }
+              return props.mark.blank ? (
+                <a href={props.mark.href} target="_blank" rel="noopener noreferrer">
+                  {children}
+                  <RiExternalLinkLine className="inline ml-1 border-0" />
+                </a>
+              ) : (
+                <a href={props.mark.href}>
+                  {children}
+                  <RiExternalLinkLine className="inline ml-1 border-0" />
+                </a>
+              );
+            }}
+          >
+            {props.children}
+          </ConditionalWrapper>
+        );
+      },
+    },
+  };
+
   return (
     <footer className="max-w-screen-xl mx-auto">
       <div className="bg-darkGrey">
@@ -45,8 +103,15 @@ const Footer = ({ footer }) => {
             </li>
           )}
         </ul>
-        {compInfo && (
-          <div className="mx-4 text-center text-white text-xs font-light">{compInfo}</div>
+        {richCompInfo && (
+          <div className="footer-info mx-4 text-center text-white text-xs font-light">
+            <BlockContent
+              blocks={richCompInfo || []}
+              serializers={serializers}
+              projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
+              dataset={process.env.NEXT_PUBLIC_SANITY_DATASET}
+            />
+          </div>
         )}
         <Link legacyBehavior href={"/"} passHref>
           <img src="/icon.svg" className="w-24 p-8 mx-auto cursor-pointer" alt="Step Together" />

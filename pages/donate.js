@@ -83,6 +83,7 @@ const Donate = ({ mainNav, homepage, donate, footer }) => {
       }}
       footer={{
         compInfo: footer.companyInfo,
+        richCompInfo: footer.richCompanyInfo,
         socialLinks: {
           fbLink: footer.facebookLink,
           inLink: footer.instagramLink,

@@ -35,6 +35,9 @@
   .rich-text h2 a {
     @apply border-b-2 bg-white text-green;
   }
+  .footer-info a {
+    @apply border-b text-white;
+  }
   article ul, 
   .rich-text ul {
     @apply list-disc pl-12 font-light;

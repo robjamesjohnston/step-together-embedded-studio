@@ -5,6 +5,7 @@ import ConditionalWrapper from "../utils/ConditionalWrapper";
 
 const InfoBox = ({ infoBoxProps, backupCol }) => {
   const { title, text, buttonText, link, bgCol } = infoBoxProps;
+
   let backgroundCol;
   switch (bgCol) {
     case "lime":
