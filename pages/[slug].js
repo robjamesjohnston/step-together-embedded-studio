@@ -214,26 +214,32 @@ const Page = ({ mainNav, homepage, page, footer }) => {
           {props.children}
         </ConditionalWrapper>
       ),
-      link: (props) => (
-        <ConditionalWrapper
-          condition={props.mark.href}
-          wrapper={(children) => {
-            return props.mark.blank ? (
-              <a href={props.mark.href} target="_blank" rel="noopener noreferrer">
-                {children}
-                <RiExternalLinkLine className="inline ml-1 border-0" />
-              </a>
-            ) : (
-              <a href={props.mark.href}>
-                {children}
-                <RiExternalLinkLine className="inline ml-1 border-0" />
-              </a>
-            );
-          }}
-        >
-          {props.children}
-        </ConditionalWrapper>
-      ),
+      link: (props) => {
+        const isMailto = props.mark.href?.startsWith("mailto:");
+        return (
+          <ConditionalWrapper
+            condition={props.mark.href}
+            wrapper={(children) => {
+              if (isMailto) {
+                return <a href={props.mark.href}>{children}</a>;
+              }
+              return props.mark.blank ? (
+                <a href={props.mark.href} target="_blank" rel="noopener noreferrer">
+                  {children}
+                  <RiExternalLinkLine className="inline ml-1 border-0" />
+                </a>
+              ) : (
+                <a href={props.mark.href}>
+                  {children}
+                  <RiExternalLinkLine className="inline ml-1 border-0" />
+                </a>
+              );
+            }}
+          >
+            {props.children}
+          </ConditionalWrapper>
+        );
+      },
     },
   };
 

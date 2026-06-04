@@ -58,9 +58,9 @@ export default {
                 fields: [
                   {
                     name: "href",
-                    type: "url",
-                    title: "URL",
-                    description: "Must start with 'https://'",
+                    type: "string",
+                    title: "URL or email",
+                    description: "Enter https://... URL or mailto:email@example.com",
                   },
                   {
                     name: "blank",
