@@ -72,7 +72,7 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
       },
     }}
   >
-    <section className="flex flex-col">
+    <section className="home-content">
       {homepage.sections.map((item) => {
         return (() => {
           if (item._type === "mainSlider") {

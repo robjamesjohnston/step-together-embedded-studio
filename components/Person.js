@@ -32,7 +32,7 @@ const Person = ({ name, job, area, bio, image, colors }) => {
   };
 
   return (
-    <section>
+    <div class="person">
       {image && (
         <figure className="relative aspect-w-1 aspect-h-1 mb-4">
           <Image
@@ -57,7 +57,7 @@ const Person = ({ name, job, area, bio, image, colors }) => {
       <div onClick={handleClick} className={open ? "" : "hidden"}>
         <p className="font-light">{bio}</p>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -17,8 +17,8 @@ const RichTextBlock = ({ text }) => {
   };
 
   const overrides = {
-    h2: (props) => <h2 className="mb-8 section-margin text-3xl font-light" {...props} />,
-    h3: (props) => <h3 className="mb-8 section-margin text-xl font-bold uppercase tracking-wide" {...props} />,
+    h2: (props) => <h2 className="mb-8 text-3xl font-light" {...props} />,
+    h3: (props) => <h3 className="mb-8 text-xl font-bold uppercase tracking-wide" {...props} />,
   };
 
   const serializers = {
@@ -88,9 +88,8 @@ const RichTextBlock = ({ text }) => {
   };
 
   return (
-    <section className="my-16">
+    <section className="rich-text text-darkGrey my-16">
       <BlockContent
-        className={"rich-text text-darkGrey"}
         blocks={text || []}
         serializers={serializers}
         projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}

@@ -21,7 +21,7 @@ const SingleButton = ({ buttonProps, colors }) => {
         );
       }}
     >
-      <div className="section-margin">
+      <div className="single-button">
         <button
           className={`referral-button tranition-all duration-300 w-full p-4 my-8 text-xl tracking-widest font-medium uppercase text-center ${colors.textCol} hover:text-white ${colors.bgHovCol} border-2 ${colors.borderCol}`}
         >

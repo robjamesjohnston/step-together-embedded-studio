@@ -86,8 +86,8 @@ const InfoBox = ({ infoBoxProps, backupCol }) => {
   };
 
   return (
-    <section className={`info-box ${backgroundCol ? backgroundCol : backupCol.bgCol}`}>
-      <div className="max-w-screen-lg m-auto px-4 py-8 xs:px-6 xs:py-12 md:px-8 md:py-16 md:flex md:space-x-8">
+    <section className={`info-box full-width section-padding ${backgroundCol ? backgroundCol : backupCol.bgCol}`}>
+      <div className="max-w-screen-md m-auto py-8 xs:py-12 md:py-16 md:flex md:space-x-8">
         <h2 className="text-white text-3xl pb-2 font-bold tracking-wide uppercase md:w-1/2">
           {title}
         </h2>

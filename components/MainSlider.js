@@ -9,7 +9,7 @@ const MainSlider = ({ slides }) => {
   return (
     <Swiper
       modules={[Keyboard, Mousewheel, Navigation, Pagination, Autoplay]}
-      className="main-slider w-full"
+      className="main-slider full-width"
       loop={true}
       autoplay={{
         delay: 5000,

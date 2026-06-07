@@ -98,16 +98,16 @@ const Donate = ({ mainNav, homepage, donate, footer }) => {
           {donate.title}
         </h1>
 
-        {donate.richTextBlock && <RichTextBlock text={donate.richTextBlock.text} />}
+        <div className="donate-content section-margin">
+          {donate.richTextBlock && <RichTextBlock text={donate.richTextBlock.text} />}
 
-        <div className="section-margin">
           {query.status == "donation_success" ? (
             <h2 className="text-3xl font-light">Thank you for your donation</h2>
           ) : query.status == "monthly_donation_success" ? (
             <h2 className="text-3xl font-light">Thank you for monthly donation</h2>
           ) : (
             <>
-              <form onSubmit={handleSubmit} className="donate-form flex flex-col max-w-screen-sm mx-auto">
+              <form onSubmit={handleSubmit} className="donate-form flex flex-col">
                 <label htmlFor="amount">Amount</label>
                 <div className="flex border-green border-2 h-16 mb-8">
                   <div className="flex justify-center items-center w-1/12">

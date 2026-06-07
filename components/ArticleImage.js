@@ -9,7 +9,7 @@ const ArticleImage = ({ imageProps, isHomepage }) => {
     <figure
       // 8, 4, 3 – 16:9
       // 6, 4, 3 – 6:4
-      className={`relative aspect-w-6 ${!isHomepage ? "my-8" : ""} ${
+      className={`article-image full-width relative aspect-w-6 ${
         alignment === "right"
           ? "aspect-h-4 md:aspect-h-2 md:w-1/2 md:self-end"
           : alignment === "full"

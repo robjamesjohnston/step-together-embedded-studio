@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 const Docs = ({ docProps, colors }) => (
-  <section className="group-docs">
+  <section className="group-docs full-width section-margin">
     <ul className={`list-none pl-0 border-t ${colors.borderCol}`}>
       {docProps.map((item) => (
         <Link legacyBehavior href={`${item.fileURL}?dl=`} key={item.file._id} passHref>

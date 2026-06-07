@@ -9,7 +9,7 @@ const Slider = ({ slides }) => {
   return (
     <Swiper
       modules={[Keyboard, Mousewheel, Navigation, Pagination]}
-      className="slider-stories section-margin my-16"
+      className="slider-stories full-width section-margin my-16"
       loop={true}
       watchOverflow={true}
       breakpoints={{
