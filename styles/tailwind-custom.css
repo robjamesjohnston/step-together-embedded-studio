@@ -50,7 +50,7 @@
     @apply px-4 xs:px-6 md:px-8;
   }
 
-  .block-content, .home-content, .donate-content {
+  .block-content, .home-content, .donate-content, .page-title {
     display: grid;
     grid-template-columns:
       [full-start] 1fr [wrapper-start] minmax(0, 768px) [wrapper-end] 1fr [full-end];
@@ -59,7 +59,7 @@
     /* column-gap: var(--pad, 1rem); */
   }
 
-  .block-content > *, .home-content > *, .donate-content > * {
+  .block-content > *, .home-content > *, .donate-content > *, .page-title > * {
     grid-column: wrapper;
   }
 

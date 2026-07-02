@@ -94,9 +94,11 @@ const Donate = ({ mainNav, homepage, donate, footer }) => {
       }}
     >
       <article className="text-darkGrey pb-16">
-        <h1 className="text-green mb-8 text-xl font-bold uppercase tracking-wide section-margin xl:pt-6">
+        <div className="page-title section-margin xl:pt-6">
+        <h1 className="text-green mb-8 text-xl font-bold uppercase tracking-wide">
           {donate.title}
         </h1>
+        </div>
 
         <div className="donate-content section-margin">
           {donate.richTextBlock && <RichTextBlock text={donate.richTextBlock.text} />}

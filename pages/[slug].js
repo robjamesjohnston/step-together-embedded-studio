@@ -268,9 +268,12 @@ const Page = ({ mainNav, homepage, page, footer }) => {
       }}
     >
       <article className="text-darkGrey pb-16">
-        <h1 className={`${colors.textCol} mb-8 text-xl font-bold uppercase tracking-wide section-margin xl:pt-6`}>
-          {page.title}
-        </h1>
+        <div className="page-title section-margin xl:pt-6">
+          <h1 className={`${colors.textCol} mb-8 text-xl font-bold uppercase tracking-wide`}>
+            {page.title}
+          </h1>
+        </div>
+
         <BlockContent
           className={"block-content"}
           blocks={page.body}
