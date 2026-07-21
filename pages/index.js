@@ -61,7 +61,6 @@ const IndexPage = ({ mainNav, homepage, footer }) => (
       description: homepage.siteDescription,
     }}
     footer={{
-      compInfo: footer.companyInfo,
       richCompInfo: footer.richCompanyInfo,
       socialLinks: {
         fbLink: footer.facebookLink,

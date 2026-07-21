@@ -41,14 +41,9 @@ export default {
       title: "YouTube",
     },
     {
-      name: "companyInfo",
-      type: "text",
-      title: "Company information",
-    },
-    {
       name: "richCompanyInfo",
       type: "array",
-      title: "Rich company information",
+      title: "Company information",
       of: [
         {
           title: "Block",

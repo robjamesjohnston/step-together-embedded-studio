@@ -256,7 +256,6 @@ const Page = ({ mainNav, homepage, page, footer }) => {
         description: homepage.siteDescription,
       }}
       footer={{
-        compInfo: footer.companyInfo,
         richCompInfo: footer.richCompanyInfo,
         socialLinks: {
           fbLink: footer.facebookLink,

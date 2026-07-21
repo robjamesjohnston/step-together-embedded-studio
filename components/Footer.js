@@ -5,7 +5,7 @@ import { GrFacebookOption, GrInstagram, GrTwitter, GrLinkedinOption, GrYoutube }
 import { RiExternalLinkLine } from "react-icons/ri";
 
 const Footer = ({ footer }) => {
-  const { compInfo, richCompInfo, socialLinks } = footer;
+  const { richCompInfo, socialLinks } = footer;
   const { fbLink, inLink, twLink, liLink, ytLink } = socialLinks;
 
   const serializers = {
